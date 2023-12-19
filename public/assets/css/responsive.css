@@ -1,0 +1,545 @@
+/*------------------------------------------------------------------
+        File Name: responsive.css
+        Template Name: Currencyzen - Responsive HTML5 Template
+-------------------------------------------------------------------*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        width: 100%;
+        max-width: 990px;
+    }
+    .padding_inner {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .layout_pur_minus {
+        margin-bottom: 0;
+    }
+    .layout_padding {
+        margin: 0 !important;
+    }
+    .crypto_update li {
+        float: left;
+        text-align: left;
+        font-size: 18px;
+        margin-left: 0px;
+        width: 33.33%;
+        padding-right: 10px;
+    }
+    #background_video {
+        display: none;
+    }
+    #mobile_slider {
+        display: block;
+    }
+    .form_news .field {
+        float: left;
+        width: 100%;
+        display: flex;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 750px;
+        width: 100%:
+    }
+    .layout_padding {
+        padding: 80px 0 75px;
+    }
+    .padding_inner {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .crypto_update li {
+        float: left;
+        text-align: left;
+        font-size: 18px;
+        margin-left: 30px;
+        width: 33.33%;
+    }
+    .cont_cy {
+        font-size: 16px;
+    }
+    .crypto_update li {
+        font-size: 18px;
+        margin-left: 0;
+        width: 33.33%;
+        padding-left: 12px;
+    }
+    .logo img {
+        width: 170px;
+    }
+    .main_menu {
+        width: 100%;
+        margin: 0;
+    }
+    .search_bar {
+        display: none;
+    }
+    .menu>ul>li {
+        width: 100%;
+        float: none;
+        display: block;
+        border-bottom: solid #ddd 2px;
+        margin: 0;
+    }
+    #background_video {
+        display: none;
+    }
+    #mobile_slider {
+        display: block;
+    }
+    .dark_layer_2 {
+        background-position: right;
+    }
+    .feature_b1 {
+        padding: 0;
+    }
+    .tabbar h3 {
+        font-size: 22px;
+        line-height: 28px;
+        margin-top: 18px;
+    }
+    .full.used_payment ul {
+        float: left;
+        width: 100%;
+        margin-right: 0;
+        display: none;
+        margin-top: 10px;
+    }
+    .form_news .field {
+        display: flex;
+    }
+    .full.used_payment ul+ul {
+        display: none;
+    }
+    .feature_b9_inner {
+        padding: 30px 0;
+    }
+    .case_study h5 {
+        font-size: 21px;
+        font-weight: 7000;
+        margin-bottom: 20px;
+    }
+    .information_bottom {
+        display: block;
+        margin-bottom: 20px;
+    }
+    .contact_information .icon_bottom {
+        width: 80px;
+        background: #f0f0f0;
+        height: 80px;
+        border-radius: 100%;
+        line-height: 80px;
+        font-size: 30px;
+        margin: 0 auto;
+    }
+    .information_bottom .info_cont {
+        text-align: center;
+    }
+    .information_bottom .info_cont h4 {
+        text-align: center;
+    }
+}
+
+@media (min-width:576px) and (max-width:767px) {
+    .container {
+        max-width: 540px;
+        width: 100%:
+    }
+    .ambess_section h2 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    .ambess_section h2::after {
+        margin: 15px auto 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel-control-next, .carousel-control-prev {
+    opacity: 1;
+    color: #000;
+    font-size: 35px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: #fff;
+    box-shadow: 0 0 40px -25px #000;
+    top: calc(50% - 25px);
+    opacity: 1;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 20px;
+        width: 100%:
+    }
+    .header_top {
+        display: none;
+    }
+    .logo {
+        position: relative;
+        text-align: center;
+    }
+.logo img {
+    width: 200px;
+}
+    .header_bottom {
+    padding: 15px 0;
+}
+    .crypto_update {
+        float: right;
+        width: auto;
+        padding: 12px 0 0;
+        display: flex;
+    }
+    .left_logo_design+div.col-md-9 {
+        display: none;
+    }
+    .main_menu {
+        width: 100%;
+        margin: 0;
+    }
+    .menu>ul>li {
+        margin: 0;
+    }
+    .search_bar {
+        display: none;
+    }
+    .blue_layer,
+    .blue_layer+div.full {
+        display: none;
+    }
+    .coins+h2 {
+        display: none;
+    }
+    .coins img {
+        width: 210px;
+    }
+    .white-banner {
+        display: none;
+    }
+    .mobile_slider {
+        display: block;
+    }
+    #logo-ticker .footer-logo-slider {
+        height: 30px;
+    }
+    .running_stock {
+        height: 52px;
+        padding: 10px 0;
+    }
+    .footer-logo-slider li img {
+        width: 30px;
+        margin: 0 10px;
+        position: relative;
+    }
+    .layout_padding {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    h2 {
+        font-size: 35px;
+        margin-bottom: 5px;
+        line-height: normal;
+    }
+    .dark_layer_2 {
+        background-position: right top;
+    }
+    h3 {
+        font-size: 24px;
+    }
+    p.large_2 {
+        font-size: 16px;
+        line-height: 23px;
+    }
+    .playpause {
+        background-size: 40px auto;
+    }
+    .brand-list {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        overflow: scroll;
+    }
+    .brand-list li {
+        float: left;
+        margin: 0 10px;
+    }
+    .tabbar ul.nav li {
+        float: left;
+        width: 50%;
+    }
+    .full.used_payment ul {
+        float: left;
+        width: 100%;
+        margin-right: 0;
+        margin-top: 0;
+    }
+    .layout_padding_2 {
+        padding: 30px 0;
+    }
+    .form_news .field {
+        float: left;
+        width: 100%;
+        display: block;
+    }
+    .form_news .field input {
+        height: 55px;
+        font-size: 15px;
+        padding: 0 15px;
+        width: 100%;
+    }
+    .form_news button {
+        height: auto;
+        width: 100%;
+    }
+    .form_news .field {
+        margin-top: 20px;
+    }
+    .golden-banner {
+        display: none;
+    }
+    .tabbar .nav-item a {
+        font-size: 17px;
+    }
+    .ambess_section h2 {
+        font-size: 35px;
+        margin-bottom: 25px;
+        line-height: 18px;
+        margin-top: 20px;
+        line-height: normal;
+    }
+    .heading_main h3,
+    .heading_main h3 span {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    .ambess_section p strong {
+        font-size: 18px;
+    }
+    .ambess_section p.large_2 {
+        font-size: 18px;
+        line-height: normal;
+        margin-bottom: 0;
+    }
+    .signup_bt.read_more_bt {
+        min-width: 210px;
+        line-height: 50px;
+        height: 50px;
+        font-size: 18px;
+        box-shadow: 0 -6px 0 -3px #111;
+        letter-spacing: 0px;
+        color: #000 !important;
+        font-weight: 700;
+    }
+    .step_section {
+        display: none;
+    }
+    .feature_b9_inner {
+        width: 90%;
+        padding: 20px 20px;
+    }
+    .case_study_cont {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    body .testimonial .row .carousel h1 {
+        font-size: 32px;
+        line-height: normal;
+        margin-top: 21px;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+    .testimonial_simple_say {
+        background: #f8f8f8;
+        padding: 50px 10px 15px 80px;
+        margin-top: 20px;
+    }
+    .view_commant .full {
+        text-align: center;
+    }
+    .view_commant .full {
+        margin-bottom: 10px;
+    }
+    .blog_section .command_cont p {
+        text-align: center;
+    }
+    h3.heading_2 {
+        font-size: 28px;
+        text-transform: none;
+        font-weight: 700;
+        line-height: 35px;
+    }
+    .coin_parches_info img {
+        width: 180px;
+    }
+    .coin_name_parchase {
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: -10px;
+    }
+    .bottom_info .pull-left,
+    .bottom_info .pull-right {
+        text-align: center;
+        width: 100%;
+    }
+    .bottom_info .read_more {
+        margin-bottom: 15px;
+    }
+    .coin_parches_info p {
+        text-align: center;
+    }
+    .read_more_bt {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        float: none;
+        width: 195px;
+        padding: 0;
+    }
+    p.large {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    footer .white_fonts h3 {
+        padding-top: 30px;
+        padding-bottom: 0;
+    }
+    #mobile_slider {
+        display: block;
+    }
+}
+
+
+/*---------------------------------------------
+    Responsive Menu 
+---------------------------------------------*/
+
+@media only screen and (max-width: 991px) {
+    #background_video {
+        display: none;
+    }
+    .menu {
+        margin: 5px 0 5px;
+        float: right;
+    }
+    .menu-container {
+        width: 100%;
+    }
+    .menu-container .menu {
+        display: inline-block;
+    }
+    .menu > ul > li > ul.normal-sub > li {
+        width: 100%;
+        padding: 0;
+    }
+    .menu>ul>li>ul>li {
+        padding: 8px 0;
+    }
+    .menu>ul>li>ul.normal-sub>li a {
+        border: 0;
+        padding: 8px 0;
+    }
+    .menu>ul>li>ul>li a {
+        color: #777;
+        padding: 0;
+        width: 100%;
+        display: block;
+        font-size: 13px;
+    }
+    .menu-mobile {
+    display: block;
+    float: left;
+    padding: 0;
+    width: 35px;
+    text-align: center;
+    height: 35px;
+    border: solid #fff 2px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.carousel-control-prev {
+    left: 5px;
+}
+
+.carousel-control-next {
+    right: 5px;
+}
+    .menu-mobile:hover,
+    .menu-mobile:focus {
+        border-color: #000;
+        color: #000;
+    }
+    .menu-dropdown-icon:before {
+        display: block;
+    }
+    .menu>ul>li>ul>li {
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        list-style: none;
+        width: 50%;
+        background: none;
+        float: left;
+        min-height: auto;
+    }
+    .menu > ul > li {
+        width: 100%;
+        float: none;
+        display: block;
+        border-bottom: solid #666 2px;
+    }
+    .menu>ul>li a {
+        padding: 11px 15px 11px;
+        width: 100%;
+        display: block;
+    }
+    .menu>ul>li>ul {
+        position: relative;
+        padding: 10px 15px;
+        overflow-y: auto;
+        border: none;
+        border-top: solid #ddd 2px;
+        width: 100%;
+        min-height: auto;
+        background-image: none;
+        box-shadow: none;
+        margin: 0;
+    }
+    .menu>ul>li>ul>li:nth-child(2n+1) {
+        background: #fff;
+    }
+    .menu>ul>li>ul.normal-sub {
+        width: 100%;
+        padding: 10px 15px;
+    }
+    .menu>ul>li>ul>li:first-child {
+        margin: 0;
+    }
+    .menu>ul>li>ul>li>ul {
+        position: relative;
+    }
+    .menu>ul>li>ul>li>ul>li {
+        float: none;
+    }
+    .main_menu .clearfix {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 45px;
+    z-index: 99;
+    background: #fff;
+    transition: ease all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    border-top: solid #ddd 2px;
+    background: #333; 
+    }
+    .main_menu .clearfix.show-on-mobile {
+        opacity: 1;
+        visibility: visible;
+    }
+}
