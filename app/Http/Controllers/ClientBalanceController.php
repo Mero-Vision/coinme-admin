@@ -43,18 +43,21 @@ class ClientBalanceController extends Controller
         $clientID=$request->client_id;
         $clientBalance = ClientBalance::where('client_id', $clientID)->first();
 
-        $rechargeRequest=Recharge::find($request->recharge_id);
         try{
-            $balance=DB::transaction(function()use($clientBalance,$request, $rechargeRequest){
+            $balance=DB::transaction(function()use($clientBalance,$request, $clientID){
                 $newBalance = $clientBalance->balance + $request->recharge_amount;
                 $clientBalance->update([
                     
                     'balance' => $newBalance,
                 ]);
-                $rechargeRequest->update([
+
+                Recharge::create([
+                    'client_id'=>$clientID,
+                    'recharge_amount'=>$request->recharge_amount,
                     'recharge_status'=>'recharged'
                     
                 ]);
+               
                 return $clientBalance;
             });
             if($clientBalance){
