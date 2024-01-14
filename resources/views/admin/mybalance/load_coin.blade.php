@@ -37,11 +37,7 @@
                                        readonly>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Amount Requested</label>
-                                    <input class="form-control" type="text" value="{{$rechargeRequest->recharge_amount}}"
-                                       readonly>
-                                </div>
+                               
 
                                 <div class="form-group">
                                     <label>Recharge Amount</label>

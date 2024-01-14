@@ -13,7 +13,7 @@
                                  class="menu-arrow"></span></a>
                          <ul style="display: none;">
                              <li><a href="{{ url('admin/users') }}">Client List</a></li>
-                             <li><a href="{{ url('admin/users/view-recharge-pending') }}">Recharge Pending</a></li>
+                             <li><a href="{{ url('admin/users/view-recharge-pending') }}">Recharge</a></li>
                              <li><a href="{{ url('admin/users/client-balance') }}">Client Balance</a></li>
 
                          </ul>

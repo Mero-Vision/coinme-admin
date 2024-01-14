@@ -18,7 +18,7 @@
 
                 <div class="row">
                     <div class="col-sm-4 col-3">
-                        <h4 class="page-title">View Recharge Request Pending List</h4>
+                        <h4 class="page-title">Load Money To Users</h4>
                     </div>
                    
                 </div>
@@ -31,8 +31,8 @@
                                     <tr>
                                         <th>Client ID</th>
                                         <th>Name</th>
-                                        <th>Recharge Amount</th>
-                                        <th>Payment Address</th>
+                                        <th>Email</th>
+                                        <th>Mobile No</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -61,16 +61,16 @@
                 processing: true,
 
                 "columns": [{
-                        "data": "client_id"
+                        "data": "id"
                     },
                     {
                         "data": "name"
                     },
                     {
-                        "data": "recharge_amount"
+                        "data": "email"
                     },
                      {
-                        "data": "payment_address"
+                        "data": "mobile_no"
                     },
                     
                     
@@ -79,7 +79,7 @@
                         data: null,
                         render: function(data, type, row) {
                             return '<button class="btn btn-danger btn-sm" onclick="viewUser(' +
-                                row.client_id + ')">Load Money</button>';
+                                row.id + ')">Load Money</button>';
                         }
                     }
 

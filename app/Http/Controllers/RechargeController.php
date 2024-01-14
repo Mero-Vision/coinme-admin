@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Recharge\CreateRechargeRequest;
 use App\Models\Recharge;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,9 +22,7 @@ class RechargeController extends Controller
 
     public function rechargePendingData()
     {
-        $rechargePending = Recharge::join('users', 'users.id', '=', 'recharges.client_id')
-            ->select('users.id as client_id', 'users.name', 'recharges.recharge_amount',
-             'recharges.payment_address')->where('recharges.recharge_status','not_done')->latest('recharges.created_at', 'desc')->get();
+        $rechargePending = User::where('status', '!=', 'admin')->latest()->get();
 
         return response()->json(['data' => $rechargePending]);
     }
