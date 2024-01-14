@@ -58,6 +58,17 @@
 
                     </div>
 
+                     <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Coin URL Settings</h4>
+                                <p class="card-text">Setup your bitcoin URL.</p>
+                                <a href="{{url('admin/settings/coin-url')}}" class="card-link">Set Up</a>
+                            </div>
+                        </div>
+
+                    </div>
+
 
                 </div>
 

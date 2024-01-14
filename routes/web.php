@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ClientBalanceController;
+use App\Http\Controllers\CoinURLController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CryptoCurrencyController;
 use App\Http\Controllers\DashboardController;
@@ -65,6 +66,8 @@ Route::group(
             Route::get('/app-settings', [SettingController::class, 'appSettingIndex']);
             Route::get('/change-password', [PasswordController::class, 'index']);
             Route::get('/about_us', [AboutController::class, 'viewAboutUsEdit']);
+            Route::get('/coin-url', [CoinURLController::class, 'index']);
+            Route::post('/coin-url', [CoinURLController::class, 'store']);
 
             Route::get('/admin/settings', [SiteSettingController::class, 'index']);
             Route::post('post', [SiteSettingController::class, 'store']);
@@ -111,6 +114,7 @@ Route::group(
         Route::get('admin/users/client-balance', [ClientBalanceController::class, 'clientBalanceView']);
         Route::get('admin/users/client-balance/data', [ClientBalanceController::class, 'clientBalanceData']);
 
+       
 
         
 
