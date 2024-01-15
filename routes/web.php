@@ -60,6 +60,8 @@ Route::group(
         Route::get('admin/users/add', [UserController::class, 'addUserIndex']);
         Route::post('admin/users/add', [UserController::class, 'save']);
         Route::get('admin/users/data/{id}', [UserController::class, 'viewUserData']);
+        Route::get('admin/users/freeze/{id}', [UserController::class, 'freezeAccount']);
+        Route::get('admin/users/unfreeze/{id}', [UserController::class, 'unfreezeAccount']);
         
 
         Route::group(['prefix' => 'admin/settings'], function () {

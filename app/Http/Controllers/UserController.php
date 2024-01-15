@@ -153,4 +153,32 @@ class UserController extends Controller
             return back()->with('error', $th->getMessage());
         }
     }
+
+    public function freezeAccount($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            $user->update([
+                'is_frozen'=>'active'
+            ]);
+            return response()->json(['status' => 'success', 'message' => 'Freezed successfully.']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'ID Not Found!']);
+        }
+    }
+
+    public function unfreezeAccount($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            $user->update([
+                'is_frozen' => 'inactive'
+            ]);
+            return response()->json(['status' => 'success', 'message' => 'Unfreezed successfully.']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'ID Not Found!']);
+        }
+    }
 }

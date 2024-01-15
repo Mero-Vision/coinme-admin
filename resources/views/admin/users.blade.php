@@ -19,7 +19,7 @@
                         <h4 class="page-title">Users</h4>
                     </div>
                     <div class="col-sm-8 col-9 text-right m-b-20">
-                        <a href="{{url('admin/users/add')}}" class="btn btn-primary float-right btn-rounded"><i
+                        <a href="{{ url('admin/users/add') }}" class="btn btn-primary float-right btn-rounded"><i
                                 class="fa fa-plus"></i> Add Users</a>
                     </div>
                 </div>
@@ -70,22 +70,35 @@
                     {
                         "data": "email"
                     },
-                     {
+                    {
                         "data": "id_number"
                     },
-                    
-                    
+
+
                     {
                         data: null,
                         render: function(data, type, row) {
+                            var freezeButton =
+                                '<button class="btn btn-warning btn-sm" onclick="freezeUser(' + row
+                                .id + ')">Freeze</button>';
+
+                            if (row.is_frozen=='active') {
+                                freezeButton =
+                                    '<button class="btn btn-success btn-sm" onclick="unfreezeUser(' +
+                                    row.id + ')">Unfreeze</button>';
+                            }
+
                             return '<button class="btn btn-danger btn-sm" onclick="deleteAccess(' +
-                                row.id + ')">Delete</button> <button class="btn btn-primary btn-sm" onclick="viewUser(' + row.id + ')">View</button>';
+                                row.id + ')">Delete</button> ' +
+                                '<button class="btn btn-primary btn-sm" onclick="viewUser(' + row
+                                .id + ')">View</button> ' +
+                                freezeButton;
                         }
                     }
 
 
                 ],
-                 order: [
+                order: [
                     [0, 'desc']
                 ],
                 "dom": 'Bfrtip',
@@ -136,23 +149,69 @@
             }
         }
 
-        
+        function freezeUser(user_id) {
+            if (confirm('Are you sure you want to freeze this account?')) {
+                $.ajax({
+                    url: '/admin/users/freeze/' + user_id,
+                    type: 'GET',
+                    data: {
+                        _method: 'GET'
+                    },
+                    success: function(response) {
+                        if (response.status === 'success') {
+
+                            $('#table_data').DataTable().ajax.reload();
+                        } else {
+
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        }
+
+        function unfreezeUser(user_id) {
+            if (confirm('Are you sure you want to unfreeze this account?')) {
+                $.ajax({
+                    url: '/admin/users/unfreeze/' + user_id,
+                    type: 'GET',
+                    data: {
+                        _method: 'GET'
+                    },
+                    success: function(response) {
+                        if (response.status === 'success') {
+
+                            $('#table_data').DataTable().ajax.reload();
+                        } else {
+
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        }
     </script>
 
     <script>
-    function viewUser(userId) {
-        var baseUrl = '{{ url("admin/users/data") }}';
-        var url = baseUrl + '/' + userId;
+        function viewUser(userId) {
+            var baseUrl = '{{ url('admin/users/data') }}';
+            var url = baseUrl + '/' + userId;
 
-        // Redirect to the constructed URL
-        window.location.href = url;
-    }
-</script>
+            // Redirect to the constructed URL
+            window.location.href = url;
+        }
+
+        
+    </script>
 
 
     <div class="sidebar-overlay" data-reff=""></div>
-   
-   @include('adminLayouts.footer')
+
+    @include('adminLayouts.footer')
 </body>
 
 
