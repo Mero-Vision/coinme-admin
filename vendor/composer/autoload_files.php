@@ -34,6 +34,7 @@ return array(
     '0b21c08a423927dd59eca6fa3c1f5521' => $vendorDir . '/php-flasher/flasher-sweetalert/helpers.php',
     'decc78cc4436b1292c6c0d151b19445c' => $vendorDir . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
+    '4e7b0ea3cd6226f5a6c0c7be5e8075dd' => $vendorDir . '/fahlisaputra/laravel-minify/src/Helpers.php',
     '37a3dc5111fe8f707ab4c132ef1dbc62' => $vendorDir . '/guzzlehttp/guzzle/src/functions_include.php',
     'c72349b1fe8d0deeedd3a52e8aa814d8' => $vendorDir . '/mockery/mockery/library/helpers.php',
     'ce9671a430e4846b44e1c68c7611f9f5' => $vendorDir . '/mockery/mockery/library/Mockery.php',

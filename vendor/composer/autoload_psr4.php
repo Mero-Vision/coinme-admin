@@ -106,6 +106,7 @@ return array(
     'Flasher\\Laravel\\' => array($vendorDir . '/php-flasher/flasher-laravel'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
+    'Fahlisaputra\\Minify\\' => array($vendorDir . '/fahlisaputra/laravel-minify/src'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Doctrine\\SqlFormatter\\' => array($vendorDir . '/doctrine/sql-formatter/src'),

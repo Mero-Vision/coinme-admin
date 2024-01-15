@@ -35,6 +35,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         '0b21c08a423927dd59eca6fa3c1f5521' => __DIR__ . '/..' . '/php-flasher/flasher-sweetalert/helpers.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '4e7b0ea3cd6226f5a6c0c7be5e8075dd' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'c72349b1fe8d0deeedd3a52e8aa814d8' => __DIR__ . '/..' . '/mockery/mockery/library/helpers.php',
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
@@ -186,6 +187,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
             'Flasher\\Laravel\\' => 16,
             'Firebase\\JWT\\' => 13,
             'Faker\\' => 6,
+            'Fahlisaputra\\Minify\\' => 20,
         ),
         'E' => 
         array (
@@ -624,6 +626,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
+        'Fahlisaputra\\Minify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
@@ -701,6 +707,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CryptoCurrencyController' => __DIR__ . '/../..' . '/app/Http/Controllers/CryptoCurrencyController.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
+        'App\\Http\\Controllers\\DeliveryTimeController' => __DIR__ . '/../..' . '/app/Http/Controllers/DeliveryTimeController.php',
         'App\\Http\\Controllers\\EmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmailController.php',
         'App\\Http\\Controllers\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/ForgotPasswordController.php',
         'App\\Http\\Controllers\\IDVerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/IDVerificationController.php',
@@ -724,6 +731,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\CryptoCurrency\\CreateCryptoCurrencyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CryptoCurrency/CreateCryptoCurrencyRequest.php',
+        'App\\Http\\Requests\\DeliveryTime\\DeliveryTimeCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/DeliveryTime/DeliveryTimeCreateRequest.php',
         'App\\Http\\Requests\\Email\\CreateComposeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Email/CreateComposeRequest.php',
         'App\\Http\\Requests\\IDVerification\\CreateIDVerificationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/IDVerification/CreateIDVerificationRequest.php',
         'App\\Http\\Requests\\Recharge\\CreateLoadMoneyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Recharge/CreateLoadMoneyRequest.php',
@@ -739,6 +747,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Models\\CoinURL' => __DIR__ . '/../..' . '/app/Models/CoinURL.php',
         'App\\Models\\ContactUs' => __DIR__ . '/../..' . '/app/Models/ContactUs.php',
         'App\\Models\\CryptoCurrency' => __DIR__ . '/../..' . '/app/Models/CryptoCurrency.php',
+        'App\\Models\\DeliveryTime' => __DIR__ . '/../..' . '/app/Models/DeliveryTime.php',
         'App\\Models\\Email' => __DIR__ . '/../..' . '/app/Models/Email.php',
         'App\\Models\\PasswordReset' => __DIR__ . '/../..' . '/app/Models/PasswordReset.php',
         'App\\Models\\Recharge' => __DIR__ . '/../..' . '/app/Models/Recharge.php',
@@ -1096,6 +1105,15 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Warning.php',
+        'Fahlisaputra\\Minify\\Controllers\\HttpConnectionHandler' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Controllers/HttpConnectionHandler.php',
+        'Fahlisaputra\\Minify\\Helpers\\CSS' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Helpers/CSS.php',
+        'Fahlisaputra\\Minify\\Helpers\\Javascript' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Helpers/Javascript.php',
+        'Fahlisaputra\\Minify\\Helpers\\JsObfuscator' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Helpers/JsObfuscator.php',
+        'Fahlisaputra\\Minify\\Middleware\\Minifier' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Middleware/Minifier.php',
+        'Fahlisaputra\\Minify\\Middleware\\MinifyCss' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Middleware/MinifyCss.php',
+        'Fahlisaputra\\Minify\\Middleware\\MinifyHtml' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Middleware/MinifyHtml.php',
+        'Fahlisaputra\\Minify\\Middleware\\MinifyJavascript' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/Middleware/MinifyJavascript.php',
+        'Fahlisaputra\\Minify\\MinifyServiceProvider' => __DIR__ . '/..' . '/fahlisaputra/laravel-minify/src/MinifyServiceProvider.php',
         'Faker\\Calculator\\Ean' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Ean.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Inn.php',
