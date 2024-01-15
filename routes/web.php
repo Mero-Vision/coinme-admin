@@ -8,6 +8,7 @@ use App\Http\Controllers\CoinURLController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CryptoCurrencyController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeliveryTimeController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\IDVerificationController;
@@ -113,6 +114,13 @@ Route::group(
         Route::post('admin/users/load-balance', [ClientBalanceController::class, 'loadClientBalance']);
         Route::get('admin/users/client-balance', [ClientBalanceController::class, 'clientBalanceView']);
         Route::get('admin/users/client-balance/data', [ClientBalanceController::class, 'clientBalanceData']);
+
+
+        Route::get('admin/delivery-time',[DeliveryTimeController::class,'index']);
+        Route::get('admin/delivery-time/create', [DeliveryTimeController::class, 'create']);
+        Route::post('admin/delivery-time/create', [DeliveryTimeController::class, 'store']);
+        Route::get('admin/delivery-time/delete/{id}', [DeliveryTimeController::class, 'destroy']);
+        Route::get('admin/delivery-time/data', [DeliveryTimeController::class, 'deliveryDataAjax']);
 
        
 
