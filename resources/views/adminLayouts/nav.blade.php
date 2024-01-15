@@ -18,7 +18,7 @@
                         ->getFirstMediaUrl('profile_image');
                 @endphp
 
-                    <img class="rounded-circle" src="{{ $profileImage ? $profileImage : url('assets/img/user.jpg') }}"
+                    <img class="rounded-circle" src="{{ Avatar::create(Auth()->user()->name)->toBase64() }}"
                         width="70" alt="Admin">
 
                     <span class="status online"></span></span>

@@ -54,9 +54,8 @@
                      <a href="#"><i class='bx bxl-bitcoin'></i> <span> Trading Market</span> <span
                              class="menu-arrow"></span></a>
                      <ul style="display: none;">
-                         <li><a href="{{ url('admin/email/compose') }}">Compose Mail</a></li>
-                         <li><a href="{{ url('admin/email/send-email') }}">View Send Email</a></li>
-                         <li><a href="{{ url('admin/email/trash') }}">View Trash</a></li>
+                         <li><a href="{{ url('admin/email/compose') }}">Create Trade Time</a></li>
+                        
 
                      </ul>
                  </li>

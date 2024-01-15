@@ -153,6 +153,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
             'League\\CommonMark\\' => 18,
             'Lcobucci\\JWT\\' => 13,
             'Lcobucci\\Clock\\' => 15,
+            'Laravolt\\Avatar\\' => 16,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sanctum\\' => 16,
@@ -525,6 +526,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             0 => __DIR__ . '/..' . '/lcobucci/clock/src',
         ),
+        'Laravolt\\Avatar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravolt/avatar/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -691,6 +696,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\ChatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChatController.php',
         'App\\Http\\Controllers\\ClientBalanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientBalanceController.php',
+        'App\\Http\\Controllers\\CoinURLController' => __DIR__ . '/../..' . '/app/Http/Controllers/CoinURLController.php',
         'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CryptoCurrencyController' => __DIR__ . '/../..' . '/app/Http/Controllers/CryptoCurrencyController.php',
@@ -730,6 +736,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Mail\\UserVerificationMail' => __DIR__ . '/../..' . '/app/Mail/UserVerificationMail.php',
         'App\\Models\\BaseModel' => __DIR__ . '/../..' . '/app/Models/BaseModel.php',
         'App\\Models\\ClientBalance' => __DIR__ . '/../..' . '/app/Models/ClientBalance.php',
+        'App\\Models\\CoinURL' => __DIR__ . '/../..' . '/app/Models/CoinURL.php',
         'App\\Models\\ContactUs' => __DIR__ . '/../..' . '/app/Models/ContactUs.php',
         'App\\Models\\CryptoCurrency' => __DIR__ . '/../..' . '/app/Models/CryptoCurrency.php',
         'App\\Models\\Email' => __DIR__ . '/../..' . '/app/Models/Email.php',
@@ -3429,6 +3436,14 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laravolt\\Avatar\\Avatar' => __DIR__ . '/..' . '/laravolt/avatar/src/Avatar.php',
+        'Laravolt\\Avatar\\Concerns\\AttributeGetter' => __DIR__ . '/..' . '/laravolt/avatar/src/Concerns/AttributeGetter.php',
+        'Laravolt\\Avatar\\Concerns\\AttributeSetter' => __DIR__ . '/..' . '/laravolt/avatar/src/Concerns/AttributeSetter.php',
+        'Laravolt\\Avatar\\Facade' => __DIR__ . '/..' . '/laravolt/avatar/src/Facade.php',
+        'Laravolt\\Avatar\\Generator\\DefaultGenerator' => __DIR__ . '/..' . '/laravolt/avatar/src/Generator/DefaultGenerator.php',
+        'Laravolt\\Avatar\\Generator\\GeneratorInterface' => __DIR__ . '/..' . '/laravolt/avatar/src/Generator/GeneratorInterface.php',
+        'Laravolt\\Avatar\\LumenServiceProvider' => __DIR__ . '/..' . '/laravolt/avatar/src/LumenServiceProvider.php',
+        'Laravolt\\Avatar\\ServiceProvider' => __DIR__ . '/..' . '/laravolt/avatar/src/ServiceProvider.php',
         'Lcobucci\\Clock\\Clock' => __DIR__ . '/..' . '/lcobucci/clock/src/Clock.php',
         'Lcobucci\\Clock\\FrozenClock' => __DIR__ . '/..' . '/lcobucci/clock/src/FrozenClock.php',
         'Lcobucci\\Clock\\SystemClock' => __DIR__ . '/..' . '/lcobucci/clock/src/SystemClock.php',

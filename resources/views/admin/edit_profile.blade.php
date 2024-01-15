@@ -26,20 +26,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="profile-img-wrap">
-
-                                    @php
-                                        $profileImage = auth()
-                                            ->user()
-                                            ->getFirstMediaUrl('profile_image');
-                                    @endphp
-
-
-                                    <img class="inline-block"
-                                        src="{{ $profileImage ? $profileImage : url('assets/img/user.jpg') }}"
-                                        alt="user">
-                                    <div class="fileupload btn">
-                                        <span class="btn-text">edit</span>
-                                        <input class="upload" type="file" name="profile_image">
+                                    <div class="profile-img">
+                                        <a href="#"><img class="avatar"
+                                                src="{{ Avatar::create(Auth()->user()->name)->toBase64() }}"
+                                                alt=""></a>
                                     </div>
                                 </div>
                                 <div class="profile-basic">

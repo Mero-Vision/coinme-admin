@@ -33,7 +33,7 @@
                                 <div class="profile-img-wrap">
                                     <div class="profile-img">
                                         <a href="#"><img class="avatar"
-                                                src="{{ auth()->user()->getFirstMediaUrl('profile_image') }}"
+                                                src="{{ Avatar::create(Auth()->user()->name)->toBase64() }}"
                                                 alt=""></a>
                                     </div>
                                 </div>
