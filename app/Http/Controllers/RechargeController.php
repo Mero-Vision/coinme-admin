@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Recharge\CreateRechargeRequest;
+use App\Models\ClientRecharge;
 use App\Models\Recharge;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class RechargeController extends Controller
 
     public function rechargePendingData()
     {
-        $rechargePending = User::where('status', '!=', 'admin')->latest()->get();
+        $rechargePending = ClientRecharge::with('media')->where('status','=','pending')->latest()->get();
 
         return response()->json(['data' => $rechargePending]);
     }
