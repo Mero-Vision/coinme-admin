@@ -14,7 +14,7 @@
             <div class="content">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">Load Money to {{ $client->name }}</h4>
+                        <h4 class="page-title">Load Money to {{ $clientBalance->name }}</h4>
                     </div>
                 </div>
                 <br>
