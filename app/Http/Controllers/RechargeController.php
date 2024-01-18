@@ -23,7 +23,7 @@ class RechargeController extends Controller
 
     public function rechargePendingData()
     {
-        $rechargePending = ClientRecharge::with('media')->where('status','=','pending')->latest()->get();
+        $rechargePending = ClientRecharge::where('status','=','pending')->latest()->get();
 
         return response()->json(['data' => $rechargePending]);
     }
