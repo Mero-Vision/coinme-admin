@@ -25,13 +25,24 @@
                         <div class="col-md-8">
                             <form action="{{ url('admin/users/load-balance') }}" method="post">
                                 @csrf
-                                <input class="form-control" name="client_id" type="hidden" value="{{ $clientBalance->user_id }}"
-                                    readonly>
-                               
+                                <input class="form-control" name="client_id" type="hidden"
+                                    value="{{ $clientBalance->user_id }}" readonly>
+
 
                                 <div class="form-group">
                                     <label>Client Name</label>
-                                    <input class="form-control" type="text" value="{{ $clientBalance->name }}" readonly>
+                                    <input class="form-control" type="text" value="{{ $clientBalance->name }}"
+                                        readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Select Currency</label>
+                                    <select class="form-control" name="currency_id">
+                                        @foreach ($currency as $data)
+                                            <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                        @endforeach
+
+
+                                    </select>
                                 </div>
 
 
