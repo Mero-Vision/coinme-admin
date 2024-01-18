@@ -25,7 +25,7 @@
                         <div class="col-md-8">
                             <form action="{{ url('admin/users/load-balance') }}" method="post">
                                 @csrf
-                                <input class="form-control" name="client_id" type="hidden" value="{{ $clientBalance->client_id }}"
+                                <input class="form-control" name="client_id" type="hidden" value="{{ $clientBalance->user_id }}"
                                     readonly>
                                
 
