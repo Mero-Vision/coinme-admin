@@ -30,12 +30,12 @@ class ClientBalanceController extends Controller
             return back();
         }
         // $rechargeRequest = Recharge::where('client_id', $client_id)->where('recharge_status', 'not_done')->first();
-        $client = User::find($client_id->client_id);
+        // $client = User::find($client_id->client_id);
 
         // $rechargeHistory= Recharge::join('users', 'users.id', '=', 'recharges.client_id')->select('users.name', 'recharges.recharge_amount')->
         // where('recharge_status','recharged')->latest('recharges.created_at','desc')->limit(10)->get();
 
-        return view('admin.mybalance.load_coin', compact('clientBalance', 'client'));
+        return view('admin.mybalance.load_coin', compact('clientBalance'));
     }
 
 
