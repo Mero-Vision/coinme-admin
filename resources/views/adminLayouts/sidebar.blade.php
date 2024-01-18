@@ -25,8 +25,8 @@
                          <a href="#"><i class="fa fa-btc"></i> <span> Crypto Currency</span> <span
                                  class="menu-arrow"></span></a>
                          <ul style="display: none;">
-                             <li class="{{ request()->is('admin/crypto-currency/create') ? 'active' : null }}"><a
-                                     href="{{ url('admin/crypto-currency/create') }}">Create Currency</a></li>
+                             {{-- <li class="{{ request()->is('admin/crypto-currency/create') ? 'active' : null }}"><a
+                                     href="{{ url('admin/crypto-currency/create') }}">Create Currency</a></li> --}}
                              <li class="{{ request()->is('admin/crypto-currency/view') ? 'active' : null }}"><a
                                      href="{{ url('admin/crypto-currency/view') }}">View Currency List</a></li>
 

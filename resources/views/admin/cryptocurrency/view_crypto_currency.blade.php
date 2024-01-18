@@ -32,9 +32,6 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Symbol</th>
-                                        <th>Price</th>
-                                        <th>Market Capital</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,22 +67,7 @@
                     {
                         "data": "symbol"
                     },
-                     {
-                        "data": "price"
-                    },
-                     {
-                        "data": "market_capital"
-                    },
                     
-                    
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            return '<button class="btn btn-danger btn-sm" onclick="deleteAccess(' +
-                                row.id + ')">Delete</button> <button class="btn btn-success btn-sm" onclick="viewUser(' +
-                                row.id + ')">Edit</button>';
-                        }
-                    }
                 ],
                  order: [
                     [0, 'desc']
