@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('symbol')->nullable();
-            $table->decimal('price');
-            $table->decimal('market_capital');
             $table->timestamps();
         });
     }
