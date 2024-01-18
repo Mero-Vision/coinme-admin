@@ -33,7 +33,7 @@
 
                                 <div class="form-group">
                                     <label>Client Name</label>
-                                    <input class="form-control" type="text" value="{{ $client->name }}" readonly>
+                                    <input class="form-control" type="text" value="{{ $clientBalance->name }}" readonly>
                                 </div>
 
 
