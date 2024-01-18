@@ -28,9 +28,6 @@ class AdminSeeder extends Seeder
         ];
 
         $user = User::firstOrCreate(['email' => $userData['email']], $userData);
-        $user->assignRole(User::ADMIN);
 
-        $url = asset('assets/img/reyan.jpeg');
-        $user->addMediaFromUrl($url)->toMediaCollection('profile_image');
     }
 }
