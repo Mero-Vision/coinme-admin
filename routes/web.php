@@ -79,6 +79,7 @@ Route::group(
         });
 
         Route::get('admin/profile', [ProfileController::class, 'index']);
+        Route::post('admin/client/document/approve',[UserController::class, 'approveClientDocument']);
         Route::get('admin/profile/edit-profile', [ProfileController::class, 'editProfileIndex']);
         Route::post('admin/profile/edit-profile/{id}', [ProfileController::class, 'updateProfile']);
         Route::get('admin/chat', [ChatController::class, 'index']);

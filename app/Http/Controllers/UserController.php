@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function userDataAjax()
     {
-        $user = User::where('status','!=','admin')->latest()->get();
+        $user = User::where('status', '!=', 'admin')->latest()->get();
         return response()->json(['data' => $user]);
     }
 
@@ -34,11 +34,12 @@ class UserController extends Controller
         return view('admin.add_user');
     }
 
-    public function viewUserData(Request $request,$id){
+    public function viewUserData(Request $request, $id)
+    {
 
-        $user=User::find($id);
-        return view('admin.view_user_data',compact('user'));
+        $user = User::find($id);
         
+        return view('admin.view_user_data', compact('user'));
     }
 
     public function save(CreateUserRequest $request)
@@ -127,21 +128,21 @@ class UserController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     // 'id_number' => $request->id_number,
-                    'mobile_no'=>$request->mobile_no,
-                    'status'=>'client'
+                    'mobile_no' => $request->mobile_no,
+                    'status' => 'client'
 
                 ]);
 
-                $currency=CryptoCurrency::get();
-                foreach($currency as $data){
+                $currency = CryptoCurrency::get();
+                foreach ($currency as $data) {
                     ClientBalance::create([
                         'client_id' => $client->id,
                         'balance' => 0,
-                        'currency_id'=>$data->id
+                        'currency_id' => $data->id
 
                     ]);
                 }
-                
+
 
                 // $client->addMedia($request->front_image)->toMediaCollection('front_image');
                 // $client->addMedia($request->back_image)->toMediaCollection('back_image');
@@ -151,8 +152,8 @@ class UserController extends Controller
 
                 return $client;
             });
-            if($client){
-                sweetalert()->addSuccess($request->name. ',your account is created successfully');
+            if ($client) {
+                sweetalert()->addSuccess($request->name . ',your account is created successfully');
                 return back();
             }
         } catch (\Throwable $th) {
@@ -166,7 +167,7 @@ class UserController extends Controller
 
         if ($user) {
             $user->update([
-                'is_frozen'=>'active'
+                'is_frozen' => 'active'
             ]);
             return response()->json(['status' => 'success', 'message' => 'Freezed successfully.']);
         } else {
@@ -186,5 +187,16 @@ class UserController extends Controller
         } else {
             return response()->json(['status' => 'error', 'message' => 'ID Not Found!']);
         }
+    }
+
+    public function approveClientDocument(Request $request)
+    {
+
+        $user = User::find($request->user_id);
+        if (!$user) {
+            return back()->with('User ID Not Found!');
+        }
+        $user->update(['verification_status'=>'verified']);
+        return back()->with('success','User Document Approved Successfully!');
     }
 }

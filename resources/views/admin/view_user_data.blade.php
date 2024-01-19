@@ -127,9 +127,17 @@
                         </div>
 
 
-                        <form class="mt-3">
-                            <button class="btn btn-primary">Approve Document</button>
+                        @if ($user->verification_status == 'unverified')
+                            <form class="mt-3" action="{{ url('admin/client/document/approve') }}" method="post">
+                            @csrf
+                            <input type="hidden" value=" {{ $user->id }}" name="user_id" />
+                            <button type="submit" class="btn btn-primary">Approve Document</button>
                         </form>
+                        @else
+                        <button class="btn btn-primary mt-3">Document Verified</button>
+                        @endif
+
+                       
 
 
 
