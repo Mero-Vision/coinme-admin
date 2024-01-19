@@ -28,6 +28,8 @@
                     <img class="inline-block" src="{{ $profileImage ? $profileImage : url('assets/img/user.jpg') }}"
                         alt="user">
 
+                        
+
                 </div>
                 <div class="row mt-3">
                     <div class="col-lg-8 offset-lg-2">
@@ -124,6 +126,10 @@
                             </div>
                         </div>
 
+                       
+ <form>
+                            <button class="btn btn-primary">Approve Document</button>
+                        </form>
 
 
 
