@@ -13,6 +13,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\IDVerificationController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MarginPercentController;
 use App\Http\Controllers\MarketController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfileController;
@@ -127,6 +128,9 @@ Route::group(
 
         Route::get('admin/client-recharge/accept/{id}', [ClientBalanceController::class, 'accept']);
         Route::get('admin/client-recharge/reject/{id}', [ClientBalanceController::class, 'reject']);
+
+        Route::get('admin/trading/margin-percent',[MarginPercentController::class,'index']);
+       
 
        
 

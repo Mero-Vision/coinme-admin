@@ -46,12 +46,14 @@
 
 
 
-                 <li class="submenu">
+                 <li class="submenu {{ request()->is('admin/trading*') ? 'active' : null }}">
                      <a href="#"><i class='bx bxl-bitcoin'></i> <span> Trading Market</span> <span
                              class="menu-arrow"></span></a>
                      <ul style="display: none;">
                          <li class="{{ request()->is('admin/delivery-time') ? 'active' : null }}"><a
                                  href="{{ url('admin/delivery-time') }}">Delivery Time</a></li>
+                         <li class="{{ request()->is('admin/trading/margin-percent') ? 'active' : null }}"><a
+                                 href="{{ url('admin/trading/margin-percent') }}">Margin Percent</a></li>
 
 
                      </ul>
