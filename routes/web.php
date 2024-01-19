@@ -130,6 +130,7 @@ Route::group(
         Route::get('admin/client-recharge/reject/{id}', [ClientBalanceController::class, 'reject']);
 
         Route::get('admin/trading/margin-percent',[MarginPercentController::class,'index']);
+        Route::post('admin/trading/margin-percent', [MarginPercentController::class, 'store']);
        
 
        
