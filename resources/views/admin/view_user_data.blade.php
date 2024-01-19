@@ -134,7 +134,7 @@
                             <button type="submit" class="btn btn-primary">Approve Document</button>
                         </form>
                         @else
-                        <button class="btn btn-primary mt-3">Document Verified</button>
+                        <button class="btn btn-primary mt-3"><i class='bx bxs-badge-check'></i> Document Verified </button>
                         @endif
 
                        
