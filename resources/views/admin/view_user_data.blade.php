@@ -28,7 +28,7 @@
                     <img class="inline-block" src="{{ $profileImage ? $profileImage : url('assets/img/user.jpg') }}"
                         alt="user">
 
-                        
+
 
                 </div>
                 <div class="row mt-3">
@@ -104,8 +104,8 @@
                                     $frontImage = $user->getFirstMediaUrl('front_image');
                                 @endphp
                                 <img class="inline-block"
-                                    src="{{ $frontImage ? $frontImage : url('assets/img/no_image.jpeg') }}" alt="user"
-                                    style="max-width: 250px; max-height: 250px;" />
+                                    src="{{ $frontImage ? $frontImage : url('assets/img/no_image.jpeg') }}"
+                                    alt="user" style="max-width: 250px; max-height: 250px;" />
 
                             </div>
                             <div class="tab-pane" id="bottom-justified-tab2">
@@ -113,21 +113,21 @@
                                     $backImage = $user->getFirstMediaUrl('back_image');
                                 @endphp
                                 <img class="inline-block"
-                                    src="{{ $backImage ? $backImage : url('assets/img/no_image.jpeg') }}" alt="user2"
-                                    style="max-width: 250px; max-height: 250px;" />
+                                    src="{{ $backImage ? $backImage : url('assets/img/no_image.jpeg') }}"
+                                    alt="user2" style="max-width: 250px; max-height: 250px;" />
                             </div>
                             <div class="tab-pane" id="bottom-justified-tab3">
-                                 @php
+                                @php
                                     $handImage = $user->getFirstMediaUrl('id_in_hand');
                                 @endphp
                                 <img class="inline-block"
-                                    src="{{ $handImage ? $handImage : url('assets/img/no_image.jpeg') }}" alt="user2"
-                                    style="max-width: 250px; max-height: 250px;" />
+                                    src="{{ $handImage ? $handImage : url('assets/img/no_image.jpeg') }}"
+                                    alt="user2" style="max-width: 250px; max-height: 250px;" />
                             </div>
                         </div>
 
-                       
- <form>
+
+                        <form class="mt-3">
                             <button class="btn btn-primary">Approve Document</button>
                         </form>
 
