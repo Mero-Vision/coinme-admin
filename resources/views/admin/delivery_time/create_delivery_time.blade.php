@@ -36,6 +36,17 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                    <label>Select Margin Percent</label>
+                                    <select class="form-control" name="margin_percent_id">
+                                        @foreach ($marginPercent as $data)
+                                            <option value="{{ $data->id }}">{{ $data->margin_percent }}%</option>
+                                        @endforeach
+
+
+                                    </select>
+                                </div>
+
                                 <div class="m-t-20 text-center">
                                     <button type="submit" class="btn btn-primary submit-btn">SUBMIT</button>
                                 </div>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('delivery_times', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
+            $table->foreignId('margin_percent_id')->nullable();
             $table->string('delivery_time')->nullable();
             $table->string('status')->default('active')->nullable();
             $table->timestamps();

@@ -33,6 +33,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Delivery Time</th>
+                                        <th>Profit/Loss Margin Percent</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -68,6 +69,12 @@
                         data: "delivery_time",
                         render: function(data, type, row) {
                             return data + 's';
+                        }
+                    },
+                    {
+                        data: "margin_percent",
+                        render: function(data, type, row) {
+                            return data + '%';
                         }
                     },
                     {
