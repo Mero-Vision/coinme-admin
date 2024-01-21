@@ -26,13 +26,10 @@
 
                             <div class="d-block mx-auto text-center mb-5">
 
-                                @php
-                                    $profileImage = $user->getFirstMediaUrl('profile_image');
-                                @endphp
 
 
-                                <img class="inline-block"
-                                    src="{{ $profileImage ? $profileImage : url('assets/img/user.jpg') }}"
+
+                                <img class="inline-block" src="{{ Avatar::create($user->name)->toBase64() }}"
                                     alt="user">
 
 
@@ -178,8 +175,8 @@
                                     </div>
                                     <div class="tab-pane" id="solid-rounded-justified-tab3">
                                         <h3 class=" mt-3" id="etcBalance">{{ $etcBalance->balance }}
-                                <span>{{ $etcBalance->symbol }}</span>
-                            </h3>
+                                            <span>{{ $etcBalance->symbol }}</span>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
