@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('coin_u_r_l_s', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
-            $table->longText('url')->nullable();
+            $table->longText('usdt_coin_url')->nullable();
+            $table->longText('btc_coin_url')->nullable();
+            $table->longText('eth_coin_url')->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();
         });

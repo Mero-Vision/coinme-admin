@@ -22,15 +22,39 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label>Coin URL</label>
+                                        <label>USDT Coin URL</label>
 
-                                        @if (isset($url['url']))
-                                            <input type="text" value="{{ $url['url'] }}"
-                                                class="form-control" name="coin_url" />
+                                        @if (isset($url['usdt_coin_url']))
+                                            <input type="text" value="{{ $url['usdt_coin_url'] }}"
+                                                class="form-control" name="usdt_coin_url" />
                                         @else
-                                            <input type="text" class="form-control" name="coin_url">
+                                            <input type="text" class="form-control" name="usdt_coin_url">
                                         @endif
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>Bitcoin Coin URL</label>
+
+                                        @if (isset($url['btc_coin_url']))
+                                            <input type="text" value="{{ $url['btc_coin_url'] }}"
+                                                class="form-control" name="bitcoin_coin_url" />
+                                        @else
+                                            <input type="text" class="form-control" name="bitcoin_coin_url">
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Etherium Coin URL</label>
+
+                                        @if (isset($url['eth_coin_url']))
+                                            <input type="text" value="{{ $url['eth_coin_url'] }}"
+                                                class="form-control" name="eth_coin_url" />
+                                        @else
+                                            <input type="text" class="form-control" name="eth_coin_url">
+                                        @endif
+                                    </div>
+
+
                                 </div>
                             </div>
                             <div class="row">

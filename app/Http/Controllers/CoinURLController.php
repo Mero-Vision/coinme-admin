@@ -22,14 +22,18 @@ class CoinURLController extends Controller
 
                 if ($url) {
                     $url->update([
-                        'url' => $request->coin_url,
-                        'description' => $request->description
+                        'usdt_coin_url' => $request->usdt_coin_url,
+                        'btc_coin_url' => $request->bitcoin_coin_url,
+                        'description' => $request->description,
+                        'eth_coin_url' => $request->eth_coin_url,
 
                     ]);
                 } else {
                     $url = CoinURL::create([
                         'user_id' => auth()->user()->id,
-                        'url' => $request->coin_url,
+                        'usdt_coin_url' => $request->usdt_coin_url,
+                        'btc_coin_url' => $request->bitcoin_coin_url,
+                        'eth_coin_url' => $request->eth_coin_url,
                         'description' => $request->description
 
                     ]);
