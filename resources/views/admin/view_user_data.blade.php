@@ -25,15 +25,8 @@
                         <div class="col-lg-8 ">
 
                             <div class="d-block mx-auto text-center mb-5">
-
-
-
-
                                 <img class="inline-block" src="{{ Avatar::create($user->name)->toBase64() }}"
                                     alt="user">
-
-
-
                             </div>
 
 
@@ -152,7 +145,7 @@
                         <div class="col-lg-4">
 
                             <div class="card-box">
-                                <h4 class="card-title">Client Wallet Coins</h4>
+                                <h4 class="card-title ">Client Wallet Coins</h4>
                                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded nav-justified">
                                     <li class="nav-item"><a class="nav-link active" href="#solid-rounded-justified-tab1"
                                             data-toggle="tab">USDT</a></li>
@@ -179,6 +172,25 @@
                                         </h3>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="card-box">
+                                <h4 class="card-title">Client Profit/Loss Tracker</h4>
+                                <form action="{{url('client/trade-status/update')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{$user->id}}" name="client_id"/>
+                                    <label class="form-label">Select Profit or Loss</label>
+                                    <select class="form-control" name="trade_status">
+                                        <option value="profit">Profit</option>
+                                        <option value="loss">Loss</option>
+                                        
+                                    </select>
+                                    <button class="btn btn-primary mt-2">Submit</button>
+                                </form>
+                                <p class="mt-2">Current Status: {{$user->trade_status??"Null"}}</p>
+
+
+
                             </div>
 
                         </div>

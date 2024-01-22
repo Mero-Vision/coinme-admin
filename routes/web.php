@@ -88,6 +88,7 @@ Route::group(
         Route::get('admin/contact_us',[ContactController::class, 'adminIndex']);
         Route::get('admin/contact_us/data', [ContactController::class, 'contactDataAjax']);
         Route::get('admin/contact_us/data/delete/{id}', [ContactController::class, 'deleteContact']);
+        Route::post('client/trade-status/update',[UserController::class, 'tradeStatusUpdate']);
 
         Route::get('admin/email/send-email', [EmailController::class, 'sendEmailIndex']);
         Route::get('admin/email/send-email/data', [EmailController::class, 'sendEmailData']);

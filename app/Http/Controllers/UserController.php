@@ -251,4 +251,30 @@ class UserController extends Controller
         $user->update(['verification_status'=>'verified']);
         return back()->with('success','User Document Approved Successfully!');
     }
+
+    public function tradeStatusUpdate(Request $request){
+        $user=User::find($request->client_id);
+        if(!$user){
+            return back()->with('error','User Not Found');
+        }
+        try{
+            $user=DB::transaction(function()use($user,$request){
+                $user->update([
+                    'trade_status'=>$request->trade_status
+                    
+                ]);
+                return $user;
+                
+            });
+            if($user){
+                return back()->with('success','Status updated successfully!');
+            }
+            
+        }
+        catch(\Exception $e){
+            return back()->with('error',$e->getMessage());
+            
+        }
+        
+    }
 }
