@@ -79,7 +79,7 @@
                     </div>
                 </div>
 
-                <ul class="nav nav-tabs nav-tabs-bottom nav-justified mt-4">
+                {{-- <ul class="nav nav-tabs nav-tabs-bottom nav-justified mt-4">
                     <li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1"
                             data-toggle="tab">Front ID Image</a></li>
                     <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2" data-toggle="tab">Back ID
@@ -117,7 +117,7 @@
                         <img class="inline-block" src="{{ $handImage ? $handImage : url('assets/img/no_image.jpeg') }}"
                             alt="user2" style="max-width: 250px; max-height: 250px;" />
                     </div>
-                </div>
+                </div> --}}
 
 
 

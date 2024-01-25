@@ -27,13 +27,10 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ url('admin/profile') }}">My Profile</a>
                 <a class="dropdown-item" href="{{ url('admin/profile/edit-profile') }}">Edit Profile</a>
-                <a class="dropdown-item" href="{{ url('admin/id_verification') }}">ID Verification</a>
-                
-                 @if (auth()->user()->status == 'admin')
-                    <a class="dropdown-item" href="{{ url('admin/settings') }}">Settings</a>
-                    <a class="dropdown-item" href="{{ url('admin/pulse') }}">Analytics</a>
-                @endif
-                
+                <a class="dropdown-item" href="{{ url('admin/settings') }}">Settings</a>
+                <a class="dropdown-item" href="{{ url('admin/pulse') }}">Analytics</a>
+
+
                 <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
             </div>
         </li>
@@ -45,11 +42,11 @@
             <a class="dropdown-item" href="{{ url('admin/profile') }}">My Profile</a>
             <a class="dropdown-item" href="{{ url('admin/profile/edit-profile') }}">Edit Profile</a>
             <a class="dropdown-item" href="{{ url('admin/id_verification') }}">ID Verification</a>
-           @if (auth()->user()->status == 'admin')
+            @if (auth()->user()->status == 'admin')
                 <a class="dropdown-item" href="{{ url('admin/settings') }}">Settings</a>
                 <a class="dropdown-item" href="{{ url('admin/pulse') }}">Analytics</a>
             @endif
-            
+
             <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
         </div>
     </div>

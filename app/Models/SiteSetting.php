@@ -23,19 +23,19 @@ class SiteSetting extends BaseModel implements HasMedia
             "display_text" => "App Name"
         ],
 
-        "about_slogan" => [
+        "site_url" => [
             "type" => "text",
             "element" => "text",
             "visible" => 1,
-            "display_text" => "About Slogan"
+            "display_text" => "Website URL"
         ],
 
 
-        "about_message" => [
+        "email" => [
             "type" => "text",
             "element" => "text",
             "visible" => 1,
-            "display_text" => "About Message"
+            "display_text" => "Email"
         ],
 
 

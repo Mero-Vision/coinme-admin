@@ -34,45 +34,28 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Owner</label>
-                                        <input class="form-control " value="Rehan Dhakal" type="text">
+                                        <label>Email</label>
+                                         @if (isset($data['email']))
+                                            <input type="text" value="{{ $data['email'] }}" class="form-control"
+                                                name="email" />
+                                        @else
+                                            <input type="text" class="form-control" name="email" />
+                                        @endif
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input class="form-control" value="rehan@example.com" type="email">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input class="form-control" value="818-978-7102" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Mobile Number</label>
-                                        <input class="form-control" value="818-635-5579" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Fax</label>
-                                        <input class="form-control" value="818-978-7102" type="text">
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Website Url</label>
-                                        <input class="form-control" value="https://www.example.com" type="text">
+                                        @if (isset($data['site_url']))
+                                            <input type="text" value="{{ $data['site_url'] }}" class="form-control"
+                                                name="site_url" />
+                                        @else
+                                            <input type="text" class="form-control" name="site_url" />
+                                        @endif
                                     </div>
                                 </div>
                             </div>
