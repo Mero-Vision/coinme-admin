@@ -42,14 +42,12 @@
             var labels = [];
             var data = [];
 
-           @foreach($clients as $client)
-            labels.push("{{ $client->created_at }}");
+           @foreach($clients->groupBy(function($date) {
+            return \Carbon\Carbon::parse($date->created_at)->format('Y-m-d');
+        }) as $day => $groupedClients)
+            labels.push("{{ $day }}");
             
-            @if($client->users)
-                data.push({{ $client->users->count() }});
-            @else
-                data.push(0); // Set count to 0 if users relationship is null
-            @endif
+            data.push({{ $groupedClients->count() }});
         @endforeach
 
 
