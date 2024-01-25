@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\ChangePasswordRequest;
+use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,9 +16,23 @@ class SettingController extends Controller
         return view('admin.setting.setting');
     }
 
-    public function appSettingIndex()
+    public function appSettingIndex($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.setting.app_setting');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        return view('admin.setting.app_setting',compact('data'));
     }
 
     public function changePassword(ChangePasswordRequest $request)

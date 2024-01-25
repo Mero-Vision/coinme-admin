@@ -12,18 +12,24 @@
         @include('adminLayouts.sidebar')
         <div class="page-wrapper">
             <div class="content">
-                
+
 
 
                 <div class="row mt-5">
                     <div class="col-lg-8 offset-lg-2">
-                        <form>
+                        <form action="{{url('admin/settings/post')}}" method="POST">
+                            @csrf
                             <h3 class="page-title">App Settings</h3>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>App Name <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" value="Coin Me">
+                                        @if (isset($data['app_name']))
+                                            <input type="text" value="{{ $data['app_name'] }}" class="form-control"
+                                                name="app_name" />
+                                        @else
+                                            <input type="text" class="form-control" name="app_name" />
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -33,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -72,7 +78,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 text-center m-t-20">
-                                    <button type="button" class="btn btn-primary submit-btn">Save</button>
+                                    <button type="submit" class="btn btn-primary submit-btn">Save</button>
                                 </div>
                             </div>
                         </form>

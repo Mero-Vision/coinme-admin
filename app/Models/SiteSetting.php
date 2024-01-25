@@ -16,11 +16,11 @@ class SiteSetting extends BaseModel implements HasMedia
 
     public static $keys = [
 
-        "about_title" => [
+        "app_name" => [
             "type" => "text",
             "element" => "text",
             "visible" => 1,
-            "display_text" => "About Title"
+            "display_text" => "App Name"
         ],
 
         "about_slogan" => [
@@ -46,56 +46,6 @@ class SiteSetting extends BaseModel implements HasMedia
             "display_text" => "Address"
         ],
 
-
-        "primary_email" => [
-            "type" => "text",
-            "element" => "text",
-            "visible" => 1,
-            "display_text" => "Primary Email"
-        ],
-
-
-        "secondary_email" => [
-            "type" => "text",
-            "element" => "text",
-            "visible" => 1,
-            "display_text" => "Secondary Email"
-        ],
-
-        "map_location" => [
-            "type" => "text",
-            "element" => "text",
-            "visible" => 1,
-            "display_text" => "Map Location"
-        ],
-
-        "registration_number" => [
-            "type" => "text",
-            "element" => "text",
-            "visible" => 1,
-            "display_text" => "Registration Number"
-        ],
-
-        "facebook_url" => [
-            "type" => "text",
-            "element" => "text",
-            "visible" => 1,
-            "display_text" => "Facebook URL"
-        ],
-
-        "twitter_url" => [
-            "type" => "text",
-            "element" => "text",
-            "visible" => 1,
-            "display_text" => "Twitter URL"
-        ],
-
-        "linkedin_url" => [
-            "type" => "text",
-            "element" => "text",
-            "visible" => 1,
-            "display_text" => "LinkedIn URL"
-        ],
 
         "youtube_url" => [
             "type" => "text",
