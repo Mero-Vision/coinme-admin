@@ -61,7 +61,7 @@
 
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <h5>Client Account Data</h5>
                     <canvas id="myChart" width="100%" height="90"></canvas>
 
