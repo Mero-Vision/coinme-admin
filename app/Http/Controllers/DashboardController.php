@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index(){
 
-        $clients=User::latest()->get();
+        $clients=User::where('status','!=','admin')->latest()->get();
        
 
             
