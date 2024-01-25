@@ -15,23 +15,69 @@
             <div class="content">
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <h5>Monthly User Registrations</h5>
-                        <canvas id="myChart" width="400" height="400"></canvas>
-
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg1"><i class="fa fa-exchange" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3>{{$totalTransactions}}</h3>
+                                <span class="widget-title1">Transactions <i class="fa fa-check"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
                     </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg2"><i class="fa fa-user-o"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3>{{$totalClients}}</h3>
+                                <span class="widget-title2">Clients <i class="fa fa-check"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg3"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3>{{$totalContactUs}}</h3>
+                                <span class="widget-title3">Contacts <i class="fa fa-check" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg4"><i class="fa fa-btc" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3>{{$clientBalance}}</h3>
+                                <span class="widget-title4">Clients Balance <i class="fa fa-check"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
 
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Client Account Data</h5>
+                    <canvas id="myChart" width="100%" height="90"></canvas>
 
                 </div>
 
 
-
-
-
-
             </div>
 
+
+
+
+
+
         </div>
+
+    </div>
     </div>
     <div class="sidebar-overlay" data-reff=""></div>
     @include('adminLayouts.footer')
@@ -42,19 +88,19 @@
             var labels = [];
             var data = [];
 
-           @foreach($clients->groupBy(function($date) {
-            return \Carbon\Carbon::parse($date->created_at)->format('Y-m-d');
-        }) as $day => $groupedClients)
-            labels.push("{{ $day }}");
-            
-            data.push({{ $groupedClients->count() }});
-        @endforeach
+            @foreach ($clients->groupBy(function ($date) {
+        return \Carbon\Carbon::parse($date->created_at)->format('Y-m-d');
+    }) as $day => $groupedClients)
+                labels.push("{{ $day }}");
+
+                data.push({{ $groupedClients->count() }});
+            @endforeach
 
 
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                   labels: labels,
+                    labels: labels,
                     datasets: [{
                         label: 'No of Clients',
                         data: data,
