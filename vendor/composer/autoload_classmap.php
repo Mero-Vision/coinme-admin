@@ -40,6 +40,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Requests\\Auth\\ChangePasswordRequest' => $baseDir . '/app/Http/Requests/Auth/ChangePasswordRequest.php',
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
     'App\\Http\\Requests\\CryptoCurrency\\CreateCryptoCurrencyRequest' => $baseDir . '/app/Http/Requests/CryptoCurrency/CreateCryptoCurrencyRequest.php',
     'App\\Http\\Requests\\DeliveryTime\\DeliveryTimeCreateRequest' => $baseDir . '/app/Http/Requests/DeliveryTime/DeliveryTimeCreateRequest.php',

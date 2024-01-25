@@ -730,6 +730,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\Auth\\ChangePasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/ChangePasswordRequest.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\CryptoCurrency\\CreateCryptoCurrencyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CryptoCurrency/CreateCryptoCurrencyRequest.php',
         'App\\Http\\Requests\\DeliveryTime\\DeliveryTimeCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/DeliveryTime/DeliveryTimeCreateRequest.php',
