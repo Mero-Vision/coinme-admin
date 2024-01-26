@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sender_id')->nullable();
             $table->foreignId('receiver_id')->nullable();
-            $table->longText('message')->nullable();
+            $table->longText('sender_message')->nullable();
+            $table->longText('receiver_message')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });
