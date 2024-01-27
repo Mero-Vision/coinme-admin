@@ -33,6 +33,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Margin Percent</th>
+                                        <th>Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,6 +41,7 @@
                                         <tr>
                                             <td>{{ $data->id }}</td>
                                             <td>{{ $data->margin_percent }}%</td>
+                                            <td><a href="{{url('admin/trading/margin-percent/edit/'.$data->id)}}" class="btn btn-primary text-light">Edit</a></td>
                                         </tr>
 
                                     @empty

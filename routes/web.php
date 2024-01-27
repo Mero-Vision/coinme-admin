@@ -135,6 +135,8 @@ Route::group(
 
         Route::get('admin/trading/margin-percent',[MarginPercentController::class,'index']);
         Route::post('admin/trading/margin-percent', [MarginPercentController::class, 'store']);
+        Route::get('admin/trading/margin-percent/edit/{id}', [MarginPercentController::class, 'edit']);
+        Route::post('admin/trading/margin-percent/edit', [MarginPercentController::class, 'update']);
 
 
         Route::get('/get-coin-price', [ClientBalanceController::class, 'getCoinPrice']);
