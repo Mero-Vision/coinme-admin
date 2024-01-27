@@ -129,6 +129,8 @@ Route::group(
         Route::post('admin/delivery-time/create', [DeliveryTimeController::class, 'store']);
         Route::get('admin/delivery-time/delete/{id}', [DeliveryTimeController::class, 'destroy']);
         Route::get('admin/delivery-time/data', [DeliveryTimeController::class, 'deliveryDataAjax']);
+        Route::get('admin/delivery-time/edit/{id}', [DeliveryTimeController::class, 'edit']);
+        Route::post('admin/delivery-time/edit', [DeliveryTimeController::class, 'update']);
 
         Route::get('admin/client-recharge/accept/{id}', [ClientBalanceController::class, 'accept']);
         Route::get('admin/client-recharge/reject/{id}', [ClientBalanceController::class, 'reject']);

@@ -54,6 +54,49 @@ class DeliveryTimeController extends Controller
         }
     }
 
+    public function edit($id){
+        
+        $deliveryTime=DeliveryTime::find($id);
+        $marginPercent = MarginPercent::get();
+        $deliveryTimes = DeliveryTime::latest()->get();
+        if(!$deliveryTime){
+            return back()->with('Delivery Time Not Found');
+        }
+        return view('admin.delivery_time.edit_delivery_time',compact('deliveryTime', 'marginPercent', 'deliveryTimes'));
+        
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'delivery_time' => ['required', 'numeric', 'max:220']
+
+        ]);
+
+        $deliveryTime = DeliveryTime::find($request->delivery_id);
+        if (!$deliveryTime) {
+            return back()->with('error', 'Delivery Time Not Found');
+        }
+
+        try {
+            $deliveryTime = DB::transaction(function () use ($request, $deliveryTime) {
+                $deliveryTime->update([
+                    'delivery_time' => $request->delivery_time,
+                    'margin_percent_id'=>$request->margin_percent_id
+
+                ]);
+                return $deliveryTime;
+            });
+            if ($deliveryTime) {
+                return redirect('admin/delivery-time')->with('success', 'Delivery Time Updated Successfully!');
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        
+    }
+
     public function destroy($id)
     {
         $time = DeliveryTime::find($id);

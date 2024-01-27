@@ -71,6 +71,15 @@ class ClientBalanceController extends Controller
                     
                 ]);
 
+                $user = ClientRecharge::where('user_id',$clientID)->first();
+
+                if ($user) {
+                    $user->update([
+                        'status' => 'approved'
+                    ]);
+
+                }
+
                 return $clientBalance;
             });
             if ($clientBalance) {

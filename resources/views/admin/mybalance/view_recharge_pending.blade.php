@@ -83,8 +83,7 @@
                           
                             
                             return '<button class="btn btn-danger btn-sm" onclick="viewUser(' +
-                                row.id + ')">Load Money</button> <button class="btn btn-success btn-sm" onclick="accept(' +
-                                    row.id + ')">Approve</button> ' +
+                                row.id + ')">Load Money</button>  ' +
                                  freezeButton;
                         }
                     }

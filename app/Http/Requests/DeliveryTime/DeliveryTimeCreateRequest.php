@@ -23,7 +23,7 @@ class DeliveryTimeCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'delivery_time'=>['required','numeric',Rule::unique('delivery_times', 'delivery_time')]
+            'delivery_time'=>['required','numeric','max:220',Rule::unique('delivery_times', 'delivery_time')]
         ];
     }
 }
