@@ -21,6 +21,7 @@ use App\Http\Controllers\RechargeController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WithdrawalRecordController;
 use App\Models\ClientBalance;
 use Illuminate\Support\Facades\Route;
 
@@ -142,6 +143,9 @@ Route::group(
 
 
         Route::get('/get-coin-price', [ClientBalanceController::class, 'getCoinPrice']);
+
+        Route::get('admin/order/withdrawal-records',[WithdrawalRecordController::class,'index']);
+        Route::get('admin/order/withdrawal-records/data', [WithdrawalRecordController::class, 'orderHistoryData']);
        
 
        

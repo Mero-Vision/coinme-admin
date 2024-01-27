@@ -58,12 +58,17 @@
 
                      </ul>
                  </li>
-                 @if (auth()->user()->status == 'client')
-                     <li>
-                         <a href="#"><i class='bx bx-transfer-alt'></i> <span>Transaction
-                                 Log</span></a>
-                     </li>
-                 @endif
+
+                 <li class="submenu {{ request()->is('admin/order*') ? 'active' : null }}">
+                     <a href="#"><i class='bx bxs-receipt'></i> <span> Order Management</span> <span
+                             class="menu-arrow"></span></a>
+                     <ul style="display: none;">
+                         <li class="{{ request()->is('admin/order/withdrawal-records') ? 'active' : null }}"><a
+                                 href="{{ url('admin/order/withdrawal-records') }}">Withdrawal Records</a></li>
+
+                     </ul>
+                 </li>
+
 
 
                  <li>
