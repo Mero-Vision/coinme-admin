@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Recharge\CreateLoadMoneyRequest;
 use App\Models\ClientBalance;
 use App\Models\ClientRecharge;
+use App\Models\ClientRechargeHistory;
 use App\Models\CryptoCurrency;
 use App\Models\Recharge;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class ClientBalanceController extends Controller
 {
@@ -50,12 +52,23 @@ class ClientBalanceController extends Controller
 
                     'balance' => $newBalance,
                 ]);
+                $coinID= $request->currency_id;
+                if ($coinID == 1) {
+                    $coin = "USDT";
+                } elseif ($coinID == 2) {
+                    $coin = "Bitcoin";
+                } elseif ($coinID == 3) {
+                    $coin = "Ethereum";
+                }
 
-                Recharge::create([
+                ClientRechargeHistory::create([
                     'client_id' => $clientID,
-                    'recharge_amount' => $request->recharge_amount,
-                    'recharge_status' => 'recharged'
-
+                    'client_name' => $request->client_name,
+                    'coin_type' => $coin,
+                    'coin_value'=>$request->coin_value,
+                    'recharge_amount'=> $request->recharge_amount,
+                    'equivalent_coin_amount'=> $request->equivalent_coin_amount,
+                    
                 ]);
 
                 return $clientBalance;
@@ -108,5 +121,32 @@ class ClientBalanceController extends Controller
         } else {
             return response()->json(['status' => 'error', 'message' => 'ID Not Found!']);
         }
+    }
+
+
+    public function getCoinPrice(Request $request)
+    {
+        $coinSymbol = $request->input('coin');
+        if($coinSymbol==1){
+            $coin= "tether";
+        }
+        elseif ($coinSymbol == 2) {
+            $coin = "bitcoin";
+        }
+        elseif ($coinSymbol == 3) {
+            $coin = "ethereum-classic";
+        }
+
+        $response = Http::get("https://api.coincap.io/v2/assets/{$coin}");
+
+
+        $currentCoinValue = $response->json('data.priceUsd');
+
+
+
+
+       
+
+        return response()->json(['currentCoinValue' => $currentCoinValue]);
     }
 }
