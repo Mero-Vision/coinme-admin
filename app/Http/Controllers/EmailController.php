@@ -5,19 +5,52 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Email\CreateComposeRequest;
 use App\Mail\EmailTemplate;
 use App\Models\Email;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public function composeEmailIndex(){
-        return view('admin.email.compose_email');
+    public function composeEmailIndex($settingable_type = null, $settingable_id = null){
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+       
+
+        
+        return view('admin.email.compose_email',compact('data'));
     }
 
-    public function sendEmailIndex()
+    public function sendEmailIndex($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.email.send_email');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+       
+
+        return view('admin.email.send_email', compact('data'));
     }
 
     public function sendEmailData(){
@@ -25,14 +58,46 @@ class EmailController extends Controller
         return response()->json(['data'=>$email]);
     }
 
-    public function viewSendEmail($emailID){
+    public function viewSendEmail($emailID, $settingable_type = null, $settingable_id = null){
         $email = Email::find($emailID);
-        return view('admin.email.view_email', compact('email'));
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+       
+
+        return view('admin.email.view_email', compact('email','data'));
         
     }
 
-    public function viewTrash(){
-        return view('admin.email.trash');
+    public function viewTrash($settingable_type = null, $settingable_id = null){
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+       
+
+        return view('admin.email.trash', compact('data'));
     }
 
     public function trashData()

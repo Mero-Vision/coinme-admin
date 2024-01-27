@@ -4,17 +4,42 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CryptoCurrency\CreateCryptoCurrencyRequest;
 use App\Models\CryptoCurrency;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CryptoCurrencyController extends Controller
 {
-    public function index(){
-        return view('admin.cryptocurrency.create_crypto');
+    public function index($settingable_type = null, $settingable_id = null){
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        return view('admin.cryptocurrency.create_crypto',compact('data'));
     }
 
-    public function viewCryptoIndex(){
-        return view('admin.cryptocurrency.view_crypto_currency');
+    public function viewCryptoIndex($settingable_type = null, $settingable_id = null){
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        return view('admin.cryptocurrency.view_crypto_currency',compact('data'));
     }
 
     public function cryptoData(){
@@ -35,11 +60,23 @@ class CryptoCurrencyController extends Controller
         }
     }
 
-    public function viewCryptoData(Request $request, $id)
+    public function viewCryptoData(Request $request, $id, $settingable_type = null, $settingable_id = null)
     {
 
         $crypto = CryptoCurrency::find($id);
-        return view('admin.cryptocurrency.edit_crypto', compact('crypto'));
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        return view('admin.cryptocurrency.edit_crypto', compact('crypto','data'));
     }
 
     public function save(CreateCryptoCurrencyRequest $request){

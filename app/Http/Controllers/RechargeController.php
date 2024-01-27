@@ -6,20 +6,49 @@ use App\Http\Requests\Recharge\CreateRechargeRequest;
 use App\Models\ClientRecharge;
 use App\Models\ClientRechargeHistory;
 use App\Models\Recharge;
+use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class RechargeController extends Controller
 {
-    public function index()
+    public function index($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.mybalance.quick_recharge');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        
+        return view('admin.mybalance.quick_recharge',compact('data'));
     }
 
-    public function viewRechargePending()
+    public function viewRechargePending($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.mybalance.view_recharge_pending');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        
+        return view('admin.mybalance.view_recharge_pending',compact('data'));
     }
 
     public function rechargePendingData()
@@ -51,8 +80,22 @@ class RechargeController extends Controller
         }
     }
 
-    public function rechargeHistory(){
-        return view('admin.mybalance.recharge_history');
+    public function rechargeHistory($settingable_type = null, $settingable_id = null){
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        
+        return view('admin.mybalance.recharge_history',compact('data'));
     }
 
     public function rechargeHistoryData()

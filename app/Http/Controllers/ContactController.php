@@ -3,16 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactUs;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function publicIndex(){
-        return view('contact');
-    }
+   
+    public function adminIndex($settingable_type = null, $settingable_id = null){
+        $setting = SiteSetting::all();
 
-    public function adminIndex(){
-        return view('admin.contact_us');
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        
+        return view('admin.contact_us',compact('data'));
     }
 
     public function contactDataAjax()

@@ -8,6 +8,7 @@ use App\Mail\UserVerificationMail;
 use App\Models\ClientBalance;
 use App\Models\CryptoCurrency;
 use App\Models\PasswordReset;
+use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,9 +19,24 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.users');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        
+        return view('admin.users',compact('data'));
     }
 
     public function userDataAjax()
@@ -29,12 +45,26 @@ class UserController extends Controller
         return response()->json(['data' => $user]);
     }
 
-    public function addUserIndex()
+    public function addUserIndex($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.add_user');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        
+        return view('admin.add_user',compact('data'));
     }
 
-    public function viewUserData(Request $request, $id)
+    public function viewUserData(Request $request, $id, $settingable_type = null, $settingable_id = null)
     {
 
         $user = User::find($id);
@@ -90,8 +120,22 @@ class UserController extends Controller
                 'client_balances.wallet_address'
 
             )->first();
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
         
-        return view('admin.view_user_data', compact('user', 'btcBalance', 'usdtBalance', 'etcBalance'));
+        return view('admin.view_user_data', compact('user', 'btcBalance', 'usdtBalance', 'etcBalance','data'));
     }
 
     public function save(CreateUserRequest $request)

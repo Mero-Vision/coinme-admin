@@ -8,6 +8,7 @@ use App\Models\ClientRecharge;
 use App\Models\ClientRechargeHistory;
 use App\Models\CryptoCurrency;
 use App\Models\Recharge;
+use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,15 +17,31 @@ use Illuminate\Support\Facades\Http;
 
 class ClientBalanceController extends Controller
 {
-    public function index()
+    public function index($settingable_type = null, $settingable_id = null)
     {
 
         $user = Auth::user();
         $clientBalance = ClientBalance::where('client_id', $user->id)->first();
-        return view('admin.mybalance.view_balance', compact('clientBalance'));
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        
+        return view('admin.mybalance.view_balance', compact('clientBalance','data'));
     }
 
-    public function loadClientBalanceIndex($client_id)
+    public function loadClientBalanceIndex($client_id, $settingable_type = null, $settingable_id = null)
     {
 
         $clientBalance = ClientRecharge::with('media')->find($client_id);
@@ -34,7 +51,21 @@ class ClientBalanceController extends Controller
         }
         $currency=CryptoCurrency::get();
 
-        return view('admin.mybalance.load_coin', compact('clientBalance','currency'));
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        return view('admin.mybalance.load_coin', compact('clientBalance','currency','data'));
     }
 
 
@@ -91,9 +122,24 @@ class ClientBalanceController extends Controller
         }
     }
 
-    public function clientBalanceView()
+    public function clientBalanceView($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.mybalance.view_client_balance');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        
+        return view('admin.mybalance.view_client_balance',compact('data'));
     }
 
     public function clientBalanceData()

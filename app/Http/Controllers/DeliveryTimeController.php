@@ -5,21 +5,51 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DeliveryTime\DeliveryTimeCreateRequest;
 use App\Models\DeliveryTime;
 use App\Models\MarginPercent;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DeliveryTimeController extends Controller
 {
-    public function index()
+    public function index($settingable_type = null, $settingable_id = null)
     {
-        return view('admin.delivery_time.delivery_time');
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        
+        return view('admin.delivery_time.delivery_time',compact('data'));
     }
 
-    public function create()
+    public function create($settingable_type = null, $settingable_id = null)
     {
         $deliveryTime = DeliveryTime::latest()->get();
         $marginPercent=MarginPercent::get();
-        return view('admin.delivery_time.create_delivery_time', compact('deliveryTime', 'marginPercent'));
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        return view('admin.delivery_time.create_delivery_time', compact('deliveryTime', 'marginPercent','data'));
     }
 
     public function deliveryDataAjax()
@@ -54,7 +84,7 @@ class DeliveryTimeController extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit($id, $settingable_type = null, $settingable_id = null){
         
         $deliveryTime=DeliveryTime::find($id);
         $marginPercent = MarginPercent::get();
@@ -62,7 +92,21 @@ class DeliveryTimeController extends Controller
         if(!$deliveryTime){
             return back()->with('Delivery Time Not Found');
         }
-        return view('admin.delivery_time.edit_delivery_time',compact('deliveryTime', 'marginPercent', 'deliveryTimes'));
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+        ->where("settingable_id", $settingable_id)
+        ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        return view('admin.delivery_time.edit_delivery_time',compact('deliveryTime', 'marginPercent', 'deliveryTimes','data'));
         
     }
 

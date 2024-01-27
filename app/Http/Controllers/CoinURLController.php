@@ -3,15 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\CoinURL;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CoinURLController extends Controller
 {
-    public function index()
+    public function index($settingable_type = null, $settingable_id = null)
     {
         $url = CoinURL::where('user_id', auth()->user()->id)->first();
-        return view('admin.setting.coin_url', compact('url'));
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+       
+
+
+        return view('admin.setting.coin_url', compact('url','data'));
     }
 
     public function store(Request $request)

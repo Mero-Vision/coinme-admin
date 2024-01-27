@@ -3,15 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\MarginPercent;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class MarginPercentController extends Controller
 {
-    public function index(){
+    public function index($settingable_type = null, $settingable_id = null){
         $marginPercent = MarginPercent::latest()->get();
-        return view('admin.margin_percent.margin_percent',compact('marginPercent'));
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+        return view('admin.margin_percent.margin_percent',compact('marginPercent','data'));
     }
 
     public function store(Request $request){
@@ -40,14 +55,28 @@ class MarginPercentController extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit($id, $settingable_type = null, $settingable_id = null){
 
         $marginPercent=MarginPercent::find($id);
         if(!$marginPercent){
             return back()->with('error','Margin Percent Not Found');
         }
 
-        return view('admin.margin_percent.edit_percent',compact('marginPercent'));
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        return view('admin.margin_percent.edit_percent',compact('marginPercent','data'));
 
         
 
