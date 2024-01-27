@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Recharge\CreateRechargeRequest;
 use App\Models\ClientRecharge;
+use App\Models\ClientRechargeHistory;
 use App\Models\Recharge;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -48,5 +49,18 @@ class RechargeController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function rechargeHistory(){
+        return view('admin.mybalance.recharge_history');
+    }
+
+    public function rechargeHistoryData()
+    {
+
+        $history = ClientRechargeHistory::latest()->get();
+
+
+        return response()->json(['data' => $history]);
     }
 }

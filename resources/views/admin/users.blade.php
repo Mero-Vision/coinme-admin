@@ -33,7 +33,7 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>ID number</th>
+                                        <th>Mobile No</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -71,7 +71,7 @@
                         "data": "email"
                     },
                     {
-                        "data": "id_number"
+                        "data": "mobile_no"
                     },
 
 
