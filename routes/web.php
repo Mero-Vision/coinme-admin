@@ -20,6 +20,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RechargeController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WithdrawalRecordController;
 use App\Models\ClientBalance;
@@ -143,6 +144,8 @@ Route::group(
         Route::post('admin/trading/margin-percent', [MarginPercentController::class, 'store']);
         Route::get('admin/trading/margin-percent/edit/{id}', [MarginPercentController::class, 'edit']);
         Route::post('admin/trading/margin-percent/edit', [MarginPercentController::class, 'update']);
+        Route::get('admin/trading/trade-history', [TradeController::class, 'tradeHistory']);
+        Route::get('admin/trading/trade-history/data', [TradeController::class, 'tradeHistoryData']);
 
 
         Route::get('/get-coin-price', [ClientBalanceController::class, 'getCoinPrice']);

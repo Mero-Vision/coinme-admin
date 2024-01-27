@@ -54,6 +54,8 @@
                                  href="{{ url('admin/delivery-time') }}">Delivery Time</a></li>
                          <li class="{{ request()->is('admin/trading/margin-percent') ? 'active' : null }}"><a
                                  href="{{ url('admin/trading/margin-percent') }}">Margin Percent</a></li>
+                                 <li class="{{ request()->is('admin/trading/trade-history') ? 'active' : null }}"><a
+                                 href="{{ url('admin/trading/trade-history') }}">Trade History</a></li>
 
 
                      </ul>
