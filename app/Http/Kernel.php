@@ -15,12 +15,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
 
-        // Middleware to minify CSS
-        \Fahlisaputra\Minify\Middleware\MinifyCss::class,
-        // Middleware to minify Javascript
-        \Fahlisaputra\Minify\Middleware\MinifyJavascript::class,
-        // Middleware to minify Blade
-        \Fahlisaputra\Minify\Middleware\MinifyHtml::class,
+       
 
         
         // \App\Http\Middleware\TrustHosts::class,

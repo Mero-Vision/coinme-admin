@@ -13,7 +13,7 @@
                     </li>
                     @forelse ($users as $data)
                         <li>
-                            <a href="#" x-on:click="$wire.chatData({{ $data->sender_id }})"><span
+                            <a href="#"  wire:click="chatData('{{ $data->sender_id }}')"><span
                                     class="chat-avatar-sm user-img"><img src="#" alt=""
                                         class="rounded-circle"><span class="status online"></span></span>
                                 {{ $data->name }}</a> 

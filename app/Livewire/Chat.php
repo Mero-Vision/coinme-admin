@@ -12,29 +12,12 @@ class Chat extends Component
     public $sender_id;
     public $sender_message;
 
-    public $showChatContent;
+    public $showChatContent=true;
 
 
     public function chatData($sender_id)
     {
-
-        // $this->showChatContent = true;
-        // if ($sender_id) {
-        //     $this->sender_id = $sender_id;
-        // } else {
-        //     $this->sender_id = null;
-
-        // }
-
-        // $chatData = Message::get();
-
-        // if ($chatData->isNotEmpty()) {
-        //     $this->sender_message = $chatData->pluck('sender_message')->implode("\n");
-        //     $this->showChatContent = true; // Set the variable to show the chat content
-        // } else {
-        //     $this->sender_message = null;
-        //     $this->showChatContent = true; // Set the variable to hide the chat content
-        // }
+        $this->showChatContent = true;
     }
 
 
