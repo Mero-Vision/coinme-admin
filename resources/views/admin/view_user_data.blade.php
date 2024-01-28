@@ -125,15 +125,31 @@
 
 
                             @if ($user->verification_status == 'unverified')
-                                <form class="mt-3" action="{{ url('admin/client/document/approve') }}"
-                                    method="post">
-                                    @csrf
-                                    <input type="hidden" value=" {{ $user->id }}" name="user_id" />
-                                    <button type="submit" class="btn btn-primary">Approve Document</button>
-                                </form>
-                            @else
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <form class="mt-3" action="{{ url('admin/client/document/approve') }}"
+                                            method="post">
+                                            @csrf
+                                            <input type="hidden" value="{{ $user->id }}" name="user_id" />
+                                            <button type="submit" class="btn btn-primary">Approve Document</button>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <form class="mt-3" action="{{ url('admin/client/document/reject') }}"
+                                            method="post">
+                                            @csrf
+                                            <input type="hidden" value="{{ $user->id }}" name="user_id" />
+                                            <button type="submit" class="btn btn-danger">Reject Document</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @elseif ($user->verification_status == 'verified')
                                 <button class="btn btn-primary mt-3"><i class='bx bxs-badge-check'></i> Document
                                     Verified
+                                </button>
+                            @else
+                             <button class="btn btn-danger mt-3"><i class='bx bxs-badge-check'></i> Rejected
                                 </button>
                             @endif
 
@@ -147,8 +163,8 @@
                             <div class="card-box">
                                 <h4 class="card-title ">Client Wallet Coins</h4>
                                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded nav-justified">
-                                    <li class="nav-item"><a class="nav-link active" href="#solid-rounded-justified-tab1"
-                                            data-toggle="tab">USDT</a></li>
+                                    <li class="nav-item"><a class="nav-link active"
+                                            href="#solid-rounded-justified-tab1" data-toggle="tab">USDT</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab2"
                                             data-toggle="tab">BTC</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab3"
@@ -176,18 +192,18 @@
 
                             <div class="card-box">
                                 <h4 class="card-title">Client Profit/Loss Tracker</h4>
-                                <form action="{{url('client/trade-status/update')}}" method="POST">
+                                <form action="{{ url('client/trade-status/update') }}" method="POST">
                                     @csrf
-                                    <input type="hidden" value="{{$user->id}}" name="client_id"/>
+                                    <input type="hidden" value="{{ $user->id }}" name="client_id" />
                                     <label class="form-label">Select Profit or Loss</label>
                                     <select class="form-control" name="trade_status">
                                         <option value="profit">Profit</option>
                                         <option value="loss">Loss</option>
-                                        
+
                                     </select>
                                     <button class="btn btn-primary mt-2">Submit</button>
                                 </form>
-                                <p class="mt-2">Current Status: {{$user->trade_status??"Null"}}</p>
+                                <p class="mt-2">Current Status: {{ $user->trade_status ?? 'Null' }}</p>
 
 
 

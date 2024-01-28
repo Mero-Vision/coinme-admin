@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\CreateClientRequest;
 use App\Http\Requests\User\CreateUserRequest;
+use App\Mail\RejectDocumentMail;
 use App\Mail\UserVerificationMail;
 use App\Models\ClientBalance;
 use App\Models\CryptoCurrency;
@@ -294,6 +295,38 @@ class UserController extends Controller
         }
         $user->update(['verification_status'=>'verified']);
         return back()->with('success','User Document Approved Successfully!');
+    }
+
+    public function rejectClientDocument(Request $request)
+    {
+
+        $user = User::find($request->user_id);
+        if (!$user) {
+            return back()->with('User ID Not Found!');
+        }
+        try{
+            $user=DB::transaction(function()use($user){
+                $user->update(['verification_status' => 'rejected']);
+                $user->clearMediaCollection('front_image');
+                $user->clearMediaCollection('back_image');
+                $user->clearMediaCollection('id_in_hand');
+
+                Mail::to($user->email)->send(new RejectDocumentMail($user));
+                return $user;
+                
+            });
+            if($user){
+                
+                return back()->with('success', 'User Document Rejected Successfully!');
+            }
+            
+        }
+        catch(\Exception $e){
+            return back()->with('error',$e->getMessage());
+            
+        }
+       
+        
     }
 
     public function tradeStatusUpdate(Request $request){
