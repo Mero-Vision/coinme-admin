@@ -2,7 +2,7 @@
     <div class="header-left">
         <a href="{{ url('admin/dashboard') }}" class="logo">
             <img src="{{ url('assets/img/fav.png') }}" width="55" height="35" alt="">
-            <span>{{ $data['app_name'] }}</span>
+            <span>{{ $data['app_name']??""}}</span>
         </a>
     </div>
     <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
