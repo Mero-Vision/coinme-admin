@@ -87,7 +87,6 @@ Route::group(
         Route::post('admin/client/document/reject', [UserController::class, 'rejectClientDocument']);
         Route::get('admin/profile/edit-profile', [ProfileController::class, 'editProfileIndex']);
         Route::post('admin/profile/edit-profile/{id}', [ProfileController::class, 'updateProfile']);
-        Route::get('admin/chat', [ChatController::class, 'index']);
         Route::get('admin/contact_us',[ContactController::class, 'adminIndex']);
         Route::get('admin/contact_us/data', [ContactController::class, 'contactDataAjax']);
         Route::get('admin/contact_us/data/delete/{id}', [ContactController::class, 'deleteContact']);
@@ -153,6 +152,10 @@ Route::group(
 
         Route::get('admin/order/withdrawal-records',[WithdrawalRecordController::class,'index']);
         Route::get('admin/order/withdrawal-records/data', [WithdrawalRecordController::class, 'orderHistoryData']);
+
+
+        Route::get('admin/chat', [ChatController::class, 'index']);
+        Route::get('admin/chat/{sender_id}', [ChatController::class, 'show']);
        
 
        

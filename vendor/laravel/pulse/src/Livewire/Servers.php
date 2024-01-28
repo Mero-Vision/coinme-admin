@@ -5,7 +5,6 @@ namespace Laravel\Pulse\Livewire;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\View;
-use Laravel\Pulse\Facades\Pulse;
 use Livewire\Attributes\Lazy;
 use Livewire\Livewire;
 
@@ -15,17 +14,15 @@ use Livewire\Livewire;
 #[Lazy]
 class Servers extends Card
 {
-    use Concerns\HasPeriod, Concerns\RemembersQueries;
-
     /**
      * Render the component.
      */
     public function render(): Renderable
     {
         [$servers, $time, $runAt] = $this->remember(function () {
-            $graphs = Pulse::graph(['cpu', 'memory'], 'avg', $this->periodAsInterval());
+            $graphs = $this->graph(['cpu', 'memory'], 'avg');
 
-            return Pulse::values('system')
+            return $this->values('system')
                 ->map(function ($system, $slug) use ($graphs) {
                     $values = json_decode($system->value, flags: JSON_THROW_ON_ERROR);
 
@@ -40,7 +37,8 @@ class Servers extends Card
                         'updated_at' => $updatedAt = CarbonImmutable::createFromTimestamp($system->timestamp),
                         'recently_reported' => $updatedAt->isAfter(now()->subSeconds(30)),
                     ];
-                });
+                })
+                ->sortBy('name');
         });
 
         if (Livewire::isLivewireRequest()) {
