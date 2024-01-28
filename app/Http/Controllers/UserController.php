@@ -74,7 +74,7 @@ class UserController extends Controller
 
         $usdt = CryptoCurrency::where('name', 'USDT')->first();
         $btc = CryptoCurrency::where('name', 'Bitcoin')->first();
-        $etc = CryptoCurrency::where('name', 'Etherium')->first();
+        $etc = CryptoCurrency::where('name', 'Ethereum')->first();
 
         $usdtBalance = ClientBalance::join(
             'crypto_currencies',
