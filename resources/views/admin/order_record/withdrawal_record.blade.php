@@ -27,7 +27,7 @@
                             <table class="table table-striped custom-table" id="table_data">
                                 <thead>
                                     <tr>
-                                       
+                                       <th>ID</th>
                                         <th>Client Name</th>
                                          <th>Email</th>
                                         <th>Amount</th>
@@ -61,6 +61,9 @@
                 processing: true,
 
                 "columns": [
+                    {
+                        "data": "id"
+                    },
                     {
                         "data": "name"
                     },
