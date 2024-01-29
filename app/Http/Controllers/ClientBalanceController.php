@@ -102,7 +102,7 @@ class ClientBalanceController extends Controller
                     
                 ]);
 
-                $user = ClientRecharge::where('user_id',$clientID)->first();
+                $user = ClientRecharge::find($request->recharge_id);
 
                 if ($user) {
                     $user->update([

@@ -27,6 +27,8 @@
                                 @csrf
                                 <input class="form-control" name="client_id" type="hidden"
                                     value="{{ $clientBalance->user_id }}" readonly>
+                                 <input class="form-control" name="recharge_id" type="hidden"
+                                    value="{{ $clientBalance->id }}" readonly>
 
 
                                 <div class="form-group">
@@ -160,13 +162,10 @@
                 });
         }
 
-        function debouncedUpdateCoinValue() {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(updateCoinValue, 500);
-        }
+       
 
         
-        setInterval(updateCoinValue, 9000);
+        setInterval(updateCoinValue, 1000);
 
         // Initial call to updateCoinValue
         updateCoinValue();
