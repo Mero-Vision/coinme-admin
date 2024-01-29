@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Coin Me | Send Email</title>
+    <title>Coin Luminex | Send Email</title>
     @include('adminLayouts.header')
 </head>
 

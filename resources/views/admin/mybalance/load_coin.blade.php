@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Coin Me | Load Coin</title>
+    <title>Coin Luminex | Load Coin</title>
     @include('adminLayouts.header')
 </head>
 

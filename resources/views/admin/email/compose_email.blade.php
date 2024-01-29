@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Coin Me</title>
+    <title>Coin Luminex</title>
     @include('adminLayouts.header')
     <link rel="stylesheet" type="text/css" href="{{url('assets/css/summernote-bs4.css')}}">
 </head>

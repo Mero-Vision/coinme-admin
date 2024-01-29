@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Coin Me | Contact Us Management</title>
+    <title>Coin Luminex | Contact Us Management</title>
     @include('adminLayouts.header')
    
 </head>

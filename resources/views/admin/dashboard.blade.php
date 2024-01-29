@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Coin Me</title>
+    <title>Coin Luminex</title>
     @include('adminLayouts.header')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>

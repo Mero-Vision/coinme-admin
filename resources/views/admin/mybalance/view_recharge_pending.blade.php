@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Coin Me | Recharge Pending List</title>
+    <title>Coin Luminex | Recharge Pending List</title>
     @include('adminLayouts.header')
 
 </head>

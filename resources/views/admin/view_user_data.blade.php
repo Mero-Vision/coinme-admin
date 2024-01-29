@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Coin Me {{ $user->name }}</title>
+    <title>Coin Luminex {{ $user->name }}</title>
     @include('adminLayouts.header')
 </head>
 
