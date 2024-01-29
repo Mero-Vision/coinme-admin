@@ -30,7 +30,7 @@ class WithdrawalRecordController extends Controller
     public function orderHistoryData(){
         
         $orders=WithdrawRecord::leftjoin('users', 'users.id','=', 'withdraw_records.client_id')
-        ->latest('withdraw_records.created_at','desc')->get();
+        ->get();
        
 
         return response()->json(['data'=>$orders]);
