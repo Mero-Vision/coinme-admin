@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class WithdrawalRecordController extends Controller
 {
-    public function index($settingable_type = null, $settingable_id = null){
+    public function index($settingable_type = null, $settingable_id = null)
+    {
         $setting = SiteSetting::all();
 
         $site_setting = SiteSetting::where("settingable_type", $settingable_type)
@@ -23,16 +24,24 @@ class WithdrawalRecordController extends Controller
                 $data[$item->key] = $item->value;
             }
         }
-        
-        return view('admin.order_record.withdrawal_record',compact('data'));
+
+        return view('admin.order_record.withdrawal_record', compact('data'));
     }
 
-    public function orderHistoryData(){
-        
-        $orders=WithdrawRecord::leftjoin('users', 'users.id','=', 'withdraw_records.client_id')
-        ->get();
-       
+    public function orderHistoryData()
+    {
 
-        return response()->json(['data'=>$orders]);
+        $orders = WithdrawRecord::leftjoin('users', 'users.id', '=', 'withdraw_records.client_id')
+            ->select(
+                'withdraw_records.id',
+                'withdraw_records.amount',
+                'withdraw_records.client_wallet_address',
+                'withdraw_records.coin_type',
+                'users.name',
+                'users.email'
+            )->get();
+
+
+        return response()->json(['data' => $orders]);
     }
 }
