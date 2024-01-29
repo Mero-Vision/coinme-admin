@@ -27,7 +27,7 @@
                             <table class="table table-striped custom-table" id="table_data">
                                 <thead>
                                     <tr>
-                                       <th>Client ID</th>
+                                       <th>ID</th>
                                         <th>Name</th>
                                          <th>Coin Type</th>
                                         <th>Coin Value</th>
@@ -63,7 +63,7 @@
 
                 "columns": [
                     {
-                        "data": "client_id"
+                        "data": "id"
                     },
                     {
                         "data": "client_name"
