@@ -78,7 +78,7 @@ class ClientBalanceController extends Controller
 
         try {
             $balance = DB::transaction(function () use ($clientBalance, $request, $clientID) {
-                $newBalance = $clientBalance->balance + $request->recharge_amount;
+                $newBalance = $clientBalance->balance + $request->equivalent_coin_amount;
                 $clientBalance->update([
 
                     'balance' => $newBalance,
