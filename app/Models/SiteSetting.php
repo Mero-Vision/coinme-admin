@@ -39,26 +39,26 @@ class SiteSetting extends BaseModel implements HasMedia
         ],
 
 
-        "address" => [
+        "about_title" => [
             "type" => "text",
             "element" => "text",
             "visible" => 1,
-            "display_text" => "Address"
+            "display_text" => "About Title"
         ],
 
 
-        "youtube_url" => [
+        "about_slogan" => [
             "type" => "text",
             "element" => "text",
             "visible" => 1,
-            "display_text" => "Youtube URL"
+            "display_text" => "About Slogan"
         ],
 
-        "instagram_url" => [
+        "about_message" => [
             "type" => "text",
             "element" => "text",
             "visible" => 1,
-            "display_text" => "Instagram URL"
+            "display_text" => "About Message"
         ],
 
         "logo" => [
