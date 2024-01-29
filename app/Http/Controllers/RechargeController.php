@@ -51,9 +51,35 @@ class RechargeController extends Controller
         return view('admin.mybalance.view_recharge_pending',compact('data'));
     }
 
+    public function viewRechargeForClients($settingable_type = null, $settingable_id = null)
+    {
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        return view('admin.mybalance.view_clients', compact('data'));
+    }
+
     public function rechargePendingData()
     {
         $rechargePending = ClientRecharge::where('status','=','pending')->latest()->get();
+
+        return response()->json(['data' => $rechargePending]);
+    }
+
+    public function rechargeClientData()
+    {
+        $rechargePending = User::where('status','!=','admin')->latest()->get();
 
         return response()->json(['data' => $rechargePending]);
     }

@@ -122,11 +122,16 @@ Route::group(
         Route::get('admin/users/view-recharge-pending/data', [RechargeController::class, 'rechargePendingData']);
         Route::get('admin/users/recharge-history', [RechargeController::class, 'rechargeHistory']);
         Route::get('admin/users/recharge-history/data', [RechargeController::class, 'rechargeHistoryData']);
+        Route::get('admin/users/recharge-clients', [RechargeController::class, 'viewRechargeForClients']);
+        Route::get('admin/users/recharge-clients/data', [RechargeController::class, 'rechargeClientData']);
+       
         
         Route::get('admin/users/load-balance/{id}', [ClientBalanceController::class, 'loadClientBalanceIndex']);
         Route::post('admin/users/load-balance', [ClientBalanceController::class, 'loadClientBalance']);
         Route::get('admin/users/client-balance', [ClientBalanceController::class, 'clientBalanceView']);
         Route::get('admin/users/client-balance/data', [ClientBalanceController::class, 'clientBalanceData']);
+        Route::get('admin/users/recharge-clients/{id}', [ClientBalanceController::class, 'topupClient']);
+        Route::post('admin/users/recharge-clients/load-coin', [ClientBalanceController::class, 'loadClientBalance2']);
 
 
         Route::get('admin/delivery-time',[DeliveryTimeController::class,'index']);

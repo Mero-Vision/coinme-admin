@@ -69,6 +69,34 @@ class ClientBalanceController extends Controller
     }
 
 
+    public function topupClient($client_id, $settingable_type = null, $settingable_id = null)
+    {
+
+        $clientBalance = User::find($client_id);
+        if (!$clientBalance) {
+            sweetalert()->addWarning('Client Balance ID Not Found!');
+            return back();
+        }
+        $currency = CryptoCurrency::get();
+
+        $setting = SiteSetting::all();
+
+        $site_setting = SiteSetting::where("settingable_type", $settingable_type)
+            ->where("settingable_id", $settingable_id)
+            ->get();
+        $data = [];
+        foreach ($site_setting as $item) {
+            if ($item->type == 'image') {
+                $data[$item->key] = $item->getFirstMediaUrl();
+            } else {
+                $data[$item->key] = $item->value;
+            }
+        }
+
+        return view('admin.mybalance.load_coin2', compact('clientBalance', 'currency', 'data'));
+    }
+
+
 
     public function loadClientBalance(CreateLoadMoneyRequest $request)
     {
@@ -116,6 +144,51 @@ class ClientBalanceController extends Controller
             if ($clientBalance) {
                 sweetalert()->addSuccess('You have loaded the amount to client successfully!');
                 return redirect('admin/users/view-recharge-pending');
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function loadClientBalance2(CreateLoadMoneyRequest $request)
+    {
+
+        $clientID = $request->client_id;
+        $clientBalance = ClientBalance::where('client_id', $clientID)->where('currency_id', $request->currency_id)->first();
+
+        try {
+            $balance = DB::transaction(function () use ($clientBalance, $request, $clientID) {
+                $newBalance = $clientBalance->balance + $request->equivalent_coin_amount;
+                $clientBalance->update([
+
+                    'balance' => $newBalance,
+                ]);
+                $coinID = $request->currency_id;
+                if ($coinID == 1) {
+                    $coin = "USDT";
+                } elseif ($coinID == 2) {
+                    $coin = "Bitcoin";
+                } elseif ($coinID == 3) {
+                    $coin = "Ethereum";
+                }
+
+                ClientRechargeHistory::create([
+                    'client_id' => $clientID,
+                    'client_name' => $request->client_name,
+                    'coin_type' => $coin,
+                    'coin_value' => $request->coin_value,
+                    'recharge_amount' => $request->recharge_amount,
+                    'equivalent_coin_amount' => $request->equivalent_coin_amount,
+
+                ]);
+
+               
+
+                return $clientBalance;
+            });
+            if ($clientBalance) {
+                sweetalert()->addSuccess('You have loaded the amount to client successfully!');
+                return redirect('admin/users/recharge-clients');
             }
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
