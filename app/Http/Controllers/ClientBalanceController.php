@@ -189,7 +189,7 @@ class ClientBalanceController extends Controller
             $coin = "bitcoin";
         }
         elseif ($coinSymbol == 3) {
-            $coin = "ethereum-classic";
+            $coin = "ethereum";
         }
 
         $response = Http::get("https://api.coincap.io/v2/assets/{$coin}");

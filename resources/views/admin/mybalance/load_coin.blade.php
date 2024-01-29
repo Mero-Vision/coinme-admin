@@ -55,7 +55,7 @@
 
                                 <div class="form-group">
                                     <label>Recharge Amount</label>
-                                    <input class="form-control" type="number" id="rechargeAmountInput"
+                                    <input class="form-control" type="text" id="rechargeAmountInput"
                                         name="recharge_amount" placeholder="Enter amount in $">
 
                                     @error('recharge_amount')
@@ -166,7 +166,7 @@
         }
 
         
-        setInterval(updateCoinValue, 1000);
+        setInterval(updateCoinValue, 9000);
 
         // Initial call to updateCoinValue
         updateCoinValue();
