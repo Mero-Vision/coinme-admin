@@ -84,7 +84,7 @@ class UserController extends Controller
         )->where('client_balances.client_id', $user->id)
             ->where('client_balances.currency_id', $usdt->id)
             ->select(
-                'client_balances.balance',
+                'client_balances.dollar_balance',
                 'crypto_currencies.name',
                 'crypto_currencies.symbol',
                 'client_balances.wallet_address'
@@ -100,7 +100,7 @@ class UserController extends Controller
         )->where('client_balances.client_id', $user->id)
             ->where('client_balances.currency_id', $btc->id)
             ->select(
-                'client_balances.balance',
+            'client_balances.dollar_balance',
                 'crypto_currencies.name',
                 'crypto_currencies.symbol',
                 'client_balances.wallet_address'
@@ -115,7 +115,7 @@ class UserController extends Controller
         )->where('client_balances.client_id', $user->id)
             ->where('client_balances.currency_id', $etc->id)
             ->select(
-                'client_balances.balance',
+            'client_balances.dollar_balance',
                 'crypto_currencies.name',
                 'crypto_currencies.symbol',
                 'client_balances.wallet_address'

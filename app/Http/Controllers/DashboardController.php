@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $totalClients=User::where('status', '!=', 'admin')->count();
         $totalTransactions = TradeTransaction::count();
         $totalContactUs = ContactUs::count();
-        $clientBalance=ClientBalance::sum('balance');
+        $clientBalance=ClientBalance::sum('dollar_balance');
 
         $setting = SiteSetting::all();
 

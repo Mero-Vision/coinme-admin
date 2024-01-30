@@ -173,18 +173,18 @@
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="solid-rounded-justified-tab1">
 
-                                        <h3 class="mt-3" id="usdtBalance">{{ $usdtBalance->balance }}
-                                            <span>{{ $usdtBalance->symbol }}</span>
+                                        <h3 class="mt-3" id="usdtBalance">{{ $usdtBalance->dollar_balance }}
+                                            <span>USD</span>
                                         </h3>
                                     </div>
                                     <div class="tab-pane" id="solid-rounded-justified-tab2">
-                                        <h3 class=" mt-3" id="btcBalance">{{ $btcBalance->balance }}
-                                            <span>{{ $btcBalance->symbol }}</span>
+                                        <h3 class=" mt-3" id="btcBalance">{{ $btcBalance->dollar_balance }}
+                                            <span>USD</span>
                                         </h3>
                                     </div>
                                     <div class="tab-pane" id="solid-rounded-justified-tab3">
-                                        <h3 class=" mt-3" id="etcBalance">{{ $etcBalance->balance }}
-                                            <span>{{ $etcBalance->symbol }}</span>
+                                        <h3 class=" mt-3" id="etcBalance">{{ $etcBalance->dollar_balance }}
+                                            <span>USD</span>
                                         </h3>
                                     </div>
                                 </div>
