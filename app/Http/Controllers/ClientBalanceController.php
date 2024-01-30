@@ -106,10 +106,10 @@ class ClientBalanceController extends Controller
 
         try {
             $balance = DB::transaction(function () use ($clientBalance, $request, $clientID) {
-                $newBalance = $clientBalance->balance + $request->equivalent_coin_amount;
+                $newBalance = $clientBalance->dollar_balance + $request->recharge_amount;
                 $clientBalance->update([
 
-                    'balance' => $newBalance,
+                    'dollar_balance' => $newBalance,
                 ]);
                 $coinID= $request->currency_id;
                 if ($coinID == 1) {
@@ -158,10 +158,10 @@ class ClientBalanceController extends Controller
 
         try {
             $balance = DB::transaction(function () use ($clientBalance, $request, $clientID) {
-                $newBalance = $clientBalance->balance + $request->equivalent_coin_amount;
+                $newBalance = $clientBalance->dollar_balance + $request->recharge_amount;
                 $clientBalance->update([
 
-                    'balance' => $newBalance,
+                    'dollar_balance' => $newBalance,
                 ]);
                 $coinID = $request->currency_id;
                 if ($coinID == 1) {
