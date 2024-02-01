@@ -18,7 +18,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Client Geo Analytics</h4>
+                                <h4 class="card-title">Client Geo Analytics Map</h4>
                                 <a href="{{url('admin/analytics/client-geo-analytics')}}" class="card-link">Click Here</a>
                             </div>
                         </div>

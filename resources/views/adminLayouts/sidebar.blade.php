@@ -94,7 +94,7 @@
 
                   @if (auth()->user()->status == 'admin')
                      <li class="{{ request()->is('admin/analytics') ? 'active' : null }}">
-                         <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span> Analytics</span></a>
+                         <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span> Analytics/Reports</span></a>
                      </li>
                  @endif
 
