@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ClientBalanceController;
@@ -161,6 +162,10 @@ Route::group(
 
         Route::get('admin/chat', [ChatController::class, 'index']);
         Route::get('admin/chat/{sender_id}', [ChatController::class, 'show']);
+
+
+        Route::get('admin/analytics',[AnalyticsController::class,'index']);
+        Route::get('admin/analytics/client-geo-analytics', [AnalyticsController::class, 'clientgeoAnalytics']);
        
 
        

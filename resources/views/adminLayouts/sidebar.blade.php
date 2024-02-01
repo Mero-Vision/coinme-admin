@@ -92,6 +92,12 @@
                      </li>
                  @endif
 
+                  @if (auth()->user()->status == 'admin')
+                     <li class="{{ request()->is('admin/analytics') ? 'active' : null }}">
+                         <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span> Analytics</span></a>
+                     </li>
+                 @endif
+
                  @if (auth()->user()->status == 'admin')
                      <li class="{{ request()->is('admin/settings*') ? 'active' : null }}">
                          <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
