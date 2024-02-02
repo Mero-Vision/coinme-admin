@@ -113,7 +113,7 @@ class DeliveryTimeController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'delivery_time' => ['required', 'numeric', 'max:220']
+            'delivery_time' => ['required', 'numeric',"min:10"]
 
         ]);
 
