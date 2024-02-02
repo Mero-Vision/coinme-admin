@@ -74,10 +74,10 @@
 
 
 
-                 <li>
+                 {{-- <li>
                      <a href="{{ url('admin/chat') }}"><i class="fa fa-comments"></i> <span>Chat</span> <span
                              class="badge badge-pill bg-primary float-right">5</span></a>
-                 </li>
+                 </li> --}}
 
                  @if (auth()->user()->status == 'admin')
                      <li class="submenu">
@@ -93,7 +93,7 @@
                  @endif
 
                   @if (auth()->user()->status == 'admin')
-                     <li class="{{ request()->is('admin/analytics') ? 'active' : null }}">
+                     <li class="{{ request()->is('admin/analytics*') ? 'active' : null }}">
                          <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span> Analytics/Reports</span></a>
                      </li>
                  @endif

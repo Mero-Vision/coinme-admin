@@ -166,6 +166,7 @@ Route::group(
 
         Route::get('admin/analytics',[AnalyticsController::class,'index']);
         Route::get('admin/analytics/client-geo-analytics', [AnalyticsController::class, 'clientgeoAnalytics']);
+        Route::get('admin/analytics/client-recharge-analytics', [AnalyticsController::class, 'clientRechargeAnalytcis']);
        
 
        

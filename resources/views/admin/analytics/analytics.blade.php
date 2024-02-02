@@ -23,6 +23,15 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Client Recharge Analytics</h4>
+                                <a href="{{url('admin/analytics/client-recharge-analytics')}}" class="card-link">Click Here</a>
+                            </div>
+                        </div>
+                    </div>
                    
                    
                     
