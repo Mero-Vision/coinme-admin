@@ -27,13 +27,14 @@
                             <table class="table table-striped custom-table" id="table_data">
                                 <thead>
                                     <tr>
-                                       <th>Client ID</th>
+                                       <th>ID</th>
                                         <th>Name</th>
                                         <th>Coin</th>
                                          <th>Trade Type</th>
                                         <th>Delivery Time</th>
                                         <th>Purchase Amount</th>
                                         <th>Purchase Price</th>
+                                         <th>Profit/Loss Amount</th>
                                         <th>Status</th>
                                        
                                     </tr>
@@ -64,7 +65,7 @@
 
                 "columns": [
                     {
-                        "data": "client_id"
+                        "data": "id"
                     },
                     {
                         "data": "name"
@@ -88,6 +89,9 @@
                    
                      {
                         "data": "purchase_price"
+                    },
+                     {
+                        "data": "profit_loss"
                     },
                      {
                         "data": "trade_status"

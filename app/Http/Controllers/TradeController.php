@@ -30,6 +30,16 @@ class TradeController extends Controller
     {
 
         $history = TradeTransaction::join('users', 'users.id', '=', 'trade_transactions.client_id')
+        ->select('trade_transactions.id', 'trade_transactions.coin',
+            'trade_transactions.trade_type',
+            'trade_transactions.delivery_time',
+            'trade_transactions.purchase_amount',
+            'trade_transactions.purchase_price',
+            'trade_transactions.profit_loss',
+            'trade_transactions.trade_status',
+            'users.name'
+        
+        )
         ->where('trade_transactions.trade_status','!=',null)->latest('trade_transactions.created_at','desc')->get();
 
 
