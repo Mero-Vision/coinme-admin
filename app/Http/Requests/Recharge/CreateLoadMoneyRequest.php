@@ -22,7 +22,7 @@ class CreateLoadMoneyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'recharge_amount'=>['required','numeric']
+            'recharge_amount'=>['required','numeric','min:5']
         ];
     }
 }
