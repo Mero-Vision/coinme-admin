@@ -99,7 +99,7 @@ class AnalyticsController extends Controller
             ->get();
 
         $coinData = "";
-        foreach ($result as $val) {
+        foreach ($coinTypeGraph as $val) {
             $coinData .= "['" . $val->coin_type . "'," . $val->total . " ],";
         }
 
