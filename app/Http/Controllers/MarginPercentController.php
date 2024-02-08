@@ -31,7 +31,7 @@ class MarginPercentController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'margin_percent'=>['required','numeric','max:50',Rule::unique('margin_percents','margin_percent')]
+            'margin_percent'=>['required','numeric','max:90',Rule::unique('margin_percents','margin_percent')]
             
         ]);
         try{
@@ -86,7 +86,7 @@ class MarginPercentController extends Controller
 
     public function update(Request $request)
     {   $request->validate([
-            'margin_percent'=>['required','numeric','max:50']
+            'margin_percent'=>['required','numeric','max:90']
         
     ]);
 
