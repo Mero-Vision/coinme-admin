@@ -55,7 +55,7 @@
                                  href="{{ url('admin/delivery-time') }}">Delivery Time</a></li>
                          <li class="{{ request()->is('admin/trading/margin-percent') ? 'active' : null }}"><a
                                  href="{{ url('admin/trading/margin-percent') }}">Margin Percent</a></li>
-                                 <li class="{{ request()->is('admin/trading/trade-history') ? 'active' : null }}"><a
+                         <li class="{{ request()->is('admin/trading/trade-history') ? 'active' : null }}"><a
                                  href="{{ url('admin/trading/trade-history') }}">Trade History</a></li>
 
 
@@ -66,8 +66,24 @@
                      <a href="#"><i class='bx bxs-receipt'></i> <span> Order Management</span> <span
                              class="menu-arrow"></span></a>
                      <ul style="display: none;">
+                         <li class="{{ request()->is('admin/order/pending-withdrawal-records') ? 'active' : null }}"><a
+                                 href="{{ url('admin/order/pending-withdrawal-records') }}">Pending Withdrawal
+                                 Records</a></li>
                          <li class="{{ request()->is('admin/order/withdrawal-records') ? 'active' : null }}"><a
                                  href="{{ url('admin/order/withdrawal-records') }}">Withdrawal Records</a></li>
+
+
+                     </ul>
+                 </li>
+
+                 <li class="submenu {{ request()->is('admin/order*') ? 'active' : null }}">
+                     <a href="#"><i class='bx bxs-receipt'></i> <span> Frozen Accounts</span> <span
+                             class="menu-arrow"></span></a>
+                     <ul style="display: none;">
+                         <li class="{{ request()->is('admin/order/pending-withdrawal-records') ? 'active' : null }}"><a
+                                 href="{{ url('admin/order/pending-withdrawal-records') }}">Frozen Account Users</a></li>
+                         
+
 
                      </ul>
                  </li>
@@ -92,9 +108,10 @@
                      </li>
                  @endif
 
-                  @if (auth()->user()->status == 'admin')
+                 @if (auth()->user()->status == 'admin')
                      <li class="{{ request()->is('admin/analytics*') ? 'active' : null }}">
-                         <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span> Analytics/Reports</span></a>
+                         <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span>
+                                 Analytics/Reports</span></a>
                      </li>
                  @endif
 

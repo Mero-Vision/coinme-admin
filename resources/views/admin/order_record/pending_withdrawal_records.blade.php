@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Withdrawal Records</title>
+    <title>Pending Withdrawal Records</title>
     @include('adminLayouts.header')
 
 </head>
@@ -15,10 +15,10 @@
             <div class="content">
 
                 <div class="row">
-                    <div class="col-sm-4 col-3">
-                        <h4 class="page-title">Coin Withdrawal Record</h4>
+                    <div class="col-sm-12 col-12">
+                        <h4 class="page-title">Pending Withdrawal Records</h4>
                     </div>
-                   
+
                 </div>
 
                 <div class="row">
@@ -27,15 +27,16 @@
                             <table class="table table-striped custom-table" id="table_data">
                                 <thead>
                                     <tr>
-                                       <th>ID</th>
+                                        <th>ID</th>
                                         <th>Client Name</th>
-                                         <th>Email</th>
+                                        <th>Email</th>
                                         <th>Amount</th>
                                         <th>Wallet Address</th>
                                         <th>Coin Type</th>
-                                         <th>Status</th>
-                                         
-                                       
+                                        <th>Status</th>
+                                        <th>Action</th>
+
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,7 +55,7 @@
         $(document).ready(function() {
             $('#table_data').DataTable({
                 ajax: {
-                    url: '/admin/order/withdrawal-records/data',
+                    url: '/admin/order/pending-withdrawal-records/data',
                     type: 'GET',
                     dataType: 'json',
                     processing: true,
@@ -62,8 +63,7 @@
                 },
                 processing: true,
 
-                "columns": [
-                    {
+                "columns": [{
                         "data": "id"
                     },
                     {
@@ -75,20 +75,31 @@
                     {
                         data: "amount",
                         render: function(data, type, row) {
-                            return '$ '+ data;
+                            return '$ ' + data;
                         }
                     },
-                     {
+                    {
                         "data": "client_wallet_address"
                     },
-                     {
+                    {
                         "data": "coin_type"
                     },
-                     {
+                    {
                         "data": "status"
                     },
-                    
-                   
+                    {
+                        data: null,
+                        render: function(data, type, row) {
+
+                            return '<button class="btn btn-success btn-sm" onclick="paidStatus(' +
+                                row.id + ')">Paid</button> ' +
+                                '<button class="btn btn-warning btn-sm" onclick="rejectWithdraw(' + row
+                                .id + ')">Reject</button> '
+
+                        }
+                    }
+
+
 
 
                 ],
@@ -120,10 +131,54 @@
             });
         });
 
-       
+        function paidStatus(id) {
+            if (confirm('Are you sure you want to confirm the amount paid?')) {
+                $.ajax({
+                    url: '/admin/order/pending-withdrawal-records/status/' + id,
+                    type: 'GET',
+                    data: {
+                        _method: 'GET'
+                    },
+                    success: function(response) {
+                        if (response.status === 'success') {
+
+                            $('#table_data').DataTable().ajax.reload();
+                        } else {
+
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        }
+
+        function rejectWithdraw(id) {
+            if (confirm('Are you sure you want to reject this withdraw request and freeze the amount?')) {
+                $.ajax({
+                    url: '/admin/order/pending-withdrawal-records/reject/' + id,
+                    type: 'GET',
+                    data: {
+                        _method: 'GET'
+                    },
+                    success: function(response) {
+                        if (response.status === 'success') {
+
+                            $('#table_data').DataTable().ajax.reload();
+                        } else {
+
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        }
     </script>
 
-   
+
 
 
     <div class="sidebar-overlay" data-reff=""></div>

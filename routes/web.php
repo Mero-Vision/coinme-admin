@@ -156,6 +156,12 @@ Route::group(
 
         Route::get('/get-coin-price', [ClientBalanceController::class, 'getCoinPrice']);
 
+        Route::get('admin/order/pending-withdrawal-records', [WithdrawalRecordController::class, 'pendingWithdrawalRecordIndex']);
+        Route::get('admin/order/pending-withdrawal-records/data', [WithdrawalRecordController::class, 'pendingWithdrawalRecordData']);
+        Route::get('admin/order/pending-withdrawal-records/status/{id}', [WithdrawalRecordController::class, 'statusPaid']);
+        Route::get('admin/order/pending-withdrawal-records/reject/{id}', [WithdrawalRecordController::class, 'rejectWithdraw']);
+
+        
         Route::get('admin/order/withdrawal-records',[WithdrawalRecordController::class,'index']);
         Route::get('admin/order/withdrawal-records/data', [WithdrawalRecordController::class, 'orderHistoryData']);
 
