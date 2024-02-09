@@ -11,7 +11,7 @@ class CoinURLController extends Controller
 {
     public function index($settingable_type = null, $settingable_id = null)
     {
-        $url = CoinURL::where('user_id', auth()->user()->id)->first();
+        $url = CoinURL::first();
 
         $setting = SiteSetting::all();
 
@@ -34,13 +34,13 @@ class CoinURLController extends Controller
 
     public function store(Request $request)
     {
-        $url = CoinURL::where('user_id', auth()->user()->id)->first();
+        $url = CoinURL::first();
         try {
             $url = DB::transaction(function () use ($request, $url) {
 
                 if ($url) {
                     $url->update([
-                        'usdt_coin_url' => $request->usdt_coin_url,
+                        // 'usdt_coin_url' => $request->usdt_coin_url,
                         'btc_coin_url' => $request->bitcoin_coin_url,
                         'description' => $request->description,
                         'eth_coin_url' => $request->eth_coin_url,
@@ -51,7 +51,7 @@ class CoinURLController extends Controller
                 } else {
                     $url = CoinURL::create([
                         'user_id' => auth()->user()->id,
-                        'usdt_coin_url' => $request->usdt_coin_url,
+                        // 'usdt_coin_url' => $request->usdt_coin_url,
                         'btc_coin_url' => $request->bitcoin_coin_url,
                         'eth_coin_url' => $request->eth_coin_url,
                         "erc_usdt"=>$request->erc20_coin_url,
