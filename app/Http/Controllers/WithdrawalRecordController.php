@@ -79,7 +79,7 @@ class WithdrawalRecordController extends Controller
             'withdraw_records.status',
                 'users.name',
                 'users.email'
-            )->where('withdraw_records.status', 'paid')->get();
+            )->where('withdraw_records.status','!=' ,'pending')->get();
 
 
         return response()->json(['data' => $orders]);

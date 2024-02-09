@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeliveryTimeController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\FrozenAmountController;
 use App\Http\Controllers\IDVerificationController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MarginPercentController;
@@ -160,6 +161,12 @@ Route::group(
         Route::get('admin/order/pending-withdrawal-records/data', [WithdrawalRecordController::class, 'pendingWithdrawalRecordData']);
         Route::get('admin/order/pending-withdrawal-records/status/{id}', [WithdrawalRecordController::class, 'statusPaid']);
         Route::get('admin/order/pending-withdrawal-records/reject/{id}', [WithdrawalRecordController::class, 'rejectWithdraw']);
+
+
+        Route::get('admin/frozen-account/view', [FrozenAmountController::class, 'index']);
+        Route::get('admin/frozen-account/load-frozen-amount/{id}', [FrozenAmountController::class, 'loadFrozenAmountIndex']);
+        Route::post('admin/frozen-account/load-frozen-amount', [FrozenAmountController::class, 'loadMoney']);
+        Route::get('admin/frozen-account/view/data', [FrozenAmountController::class, 'frozenAmountUserData']);
 
         
         Route::get('admin/order/withdrawal-records',[WithdrawalRecordController::class,'index']);

@@ -70,18 +70,18 @@
                                  href="{{ url('admin/order/pending-withdrawal-records') }}">Pending Withdrawal
                                  Records</a></li>
                          <li class="{{ request()->is('admin/order/withdrawal-records') ? 'active' : null }}"><a
-                                 href="{{ url('admin/order/withdrawal-records') }}">Withdrawal Records</a></li>
+                                 href="{{ url('admin/order/withdrawal-records') }}">Withdrawal History Records</a></li>
 
 
                      </ul>
                  </li>
 
-                 <li class="submenu {{ request()->is('admin/order*') ? 'active' : null }}">
+                 <li class="submenu {{ request()->is('admin/frozen-account*') ? 'active' : null }}">
                      <a href="#"><i class='bx bxs-receipt'></i> <span> Frozen Accounts</span> <span
                              class="menu-arrow"></span></a>
                      <ul style="display: none;">
-                         <li class="{{ request()->is('admin/order/pending-withdrawal-records') ? 'active' : null }}"><a
-                                 href="{{ url('admin/order/pending-withdrawal-records') }}">Frozen Account Users</a></li>
+                         <li class="{{ request()->is('admin/frozen-account/view') ? 'active' : null }}"><a
+                                 href="{{ url('admin/frozen-account/view') }}">Frozen Account Users</a></li>
                          
 
 
