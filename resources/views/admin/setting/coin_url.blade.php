@@ -22,13 +22,24 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label>USDT Coin URL</label>
+                                        <label>ERC20 Coin URL</label>
 
-                                        @if (isset($url['usdt_coin_url']))
-                                            <input type="text" value="{{ $url['usdt_coin_url'] }}"
-                                                class="form-control" name="usdt_coin_url" />
+                                        @if (isset($url['erc_usdt']))
+                                            <input type="text" value="{{ $url['erc_usdt'] }}" class="form-control"
+                                                name="erc20_coin_url" />
                                         @else
-                                            <input type="text" class="form-control" name="usdt_coin_url">
+                                            <input type="text" class="form-control" name="erc20_coin_url">
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>TRC20 Coin URL</label>
+
+                                        @if (isset($url['trc_usdt']))
+                                            <input type="text" value="{{ $url['trc_usdt'] }}" class="form-control"
+                                                name="trc_coin_url" />
+                                        @else
+                                            <input type="text" class="form-control" name="trc_coin_url">
                                         @endif
                                     </div>
 

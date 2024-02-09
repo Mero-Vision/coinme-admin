@@ -44,6 +44,8 @@ class CoinURLController extends Controller
                         'btc_coin_url' => $request->bitcoin_coin_url,
                         'description' => $request->description,
                         'eth_coin_url' => $request->eth_coin_url,
+                        "erc_usdt" => $request->erc20_coin_url,
+                        "trc_usdt" => $request->trc_coin_url,
 
                     ]);
                 } else {
@@ -52,6 +54,8 @@ class CoinURLController extends Controller
                         'usdt_coin_url' => $request->usdt_coin_url,
                         'btc_coin_url' => $request->bitcoin_coin_url,
                         'eth_coin_url' => $request->eth_coin_url,
+                        "erc_usdt"=>$request->erc20_coin_url,
+                        "trc_usdt"=>$request->trc_coin_url,
                         'description' => $request->description
 
                     ]);
