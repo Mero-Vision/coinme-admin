@@ -81,7 +81,7 @@ Route::group(
             Route::get('/admin/settings', [SiteSettingController::class, 'index']);
             Route::post('post', [SiteSettingController::class, 'store']);
 
-            Route::post('/change-password',[SettingController::class, 'changePassword']);
+            Route::post('/change-password',[SettingController::class, 'changepassword']);
         });
 
         Route::get('admin/profile', [ProfileController::class, 'index']);

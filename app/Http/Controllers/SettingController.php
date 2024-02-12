@@ -50,25 +50,26 @@ class SettingController extends Controller
         return view('admin.setting.app_setting',compact('data'));
     }
 
-    public function changePassword(ChangePasswordRequest $request)
+    public function changepassword(Request $request)
     {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required|same:new_password'
+        ]);
         $user = User::find(auth()->user()->id);
 
+        if (!$user) {
+            return back()->with('error', 'User not found');
+        }
+
         if (!Hash::check($request->old_password, $user->password)) {
-            return back()->with('error', 'Incorrect Old Password!');
-        }
-
-        if (Hash::check($request->old_password, $request->new_password)) {
-            return back()->with('error', 'Old password should not be the same as New Password');
-        }
-
-        if (!Hash::check($request->new_password, $request->confirm_password)) {
-            return back()->with('error', 'New Password and Confirm Password do not match');
+            return back()->with('error', 'The current password does not match');
         }
 
         $user->password = Hash::make($request->new_password);
         $user->save();
 
-        return back()->with('success', 'Password Changed Successfully!');
+        return redirect('/')->with('success', 'Password changed successfully');
     }
 }

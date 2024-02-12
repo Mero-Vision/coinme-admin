@@ -120,6 +120,10 @@
                          <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
                      </li>
                  @endif
+               
+                  <li class="{{ request()->is('logout*') ? 'active' : null }}">
+                         <a href="{{ url('logout') }}"><i class="bx bx-log-in-circle"></i> <span>Logout</span></a>
+                     </li>
 
 
 

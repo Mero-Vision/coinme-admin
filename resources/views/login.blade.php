@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="{{url('assets/img/fav.png')}}">
-    <title>My Crypto</title>
+    <title>Coin Luminex</title>
     <link rel="stylesheet" type="text/css" href="{{url('assets/css/adminbootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('assets/css/font-awesome.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('assets/css/style.css')}}">
@@ -19,7 +19,7 @@
                     <form action="{{url('login')}}" method="post" class="form-signin">
                         @csrf
 						<div class="account-logo">
-                            <a href="{{url('/')}}"><img src="{{url('assets/img/logo_transparent.png')}}" alt=""></a>
+                            <a href="{{url('/')}}"><img src="{{url('assets/img/Coin Luminex-logos_transparent.png')}}" alt=""></a>
                         </div>
                         <br>
                         <div class="form-group">

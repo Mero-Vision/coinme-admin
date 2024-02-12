@@ -23,7 +23,9 @@
                                         <label>Old password</label>
                                         <input type="password" class="form-control" name="old_password">
                                         @error('old_password')
-                                            {{ $message }}
+                                            <p class="text-danger">
+                                                {{ $message }}
+                                            </p>
                                         @enderror
                                     </div>
                                 </div>
@@ -34,7 +36,9 @@
                                         <label>New password</label>
                                         <input type="password" class="form-control" name="new_password">
                                         @error('new_password')
-                                            {{ $message }}
+                                            <p class="text-danger">
+                                                {{ $message }}
+                                            </p>
                                         @enderror
                                     </div>
                                 </div>
@@ -43,7 +47,9 @@
                                         <label>Confirm password</label>
                                         <input type="password" class="form-control" name="confirm_password">
                                         @error('confirm_password')
-                                            {{ $message }}
+                                            <p class="text-danger">
+                                                {{ $message }}
+                                            </p>
                                         @enderror
                                     </div>
                                 </div>
