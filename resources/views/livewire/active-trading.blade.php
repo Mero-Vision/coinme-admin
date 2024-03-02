@@ -2,6 +2,7 @@
    <table class="table mt-3" wire:poll.1s>
         <thead>
             <tr>
+                 <th>Client Name</th>
                 <th>Purchase Amount</th>
                 <th>Direction</th>
                 <th>Purchase Price</th>
@@ -11,6 +12,7 @@
         <tbody>
             @forelse ($trades as $data)
                 <tr>
+                    <td>{{ $data->name }}</td>
                     <td>${{ $data->purchase_amount }} USD</td>
                     @if ($data->trade_type == 'bullish')
                         <td class="bg-success text-capitalize">{{ $data->trade_type }}</td>
