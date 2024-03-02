@@ -153,6 +153,7 @@ Route::group(
         Route::post('admin/trading/margin-percent/edit', [MarginPercentController::class, 'update']);
         Route::get('admin/trading/trade-history', [TradeController::class, 'tradeHistory']);
         Route::get('admin/trading/trade-history/data', [TradeController::class, 'tradeHistoryData']);
+        Route::get('admin/trading/active-trading', [TradeController::class, 'activeTradeHistory']);
 
 
         Route::get('/get-coin-price', [ClientBalanceController::class, 'getCoinPrice']);

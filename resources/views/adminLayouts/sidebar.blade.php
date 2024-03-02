@@ -58,6 +58,8 @@
                          <li class="{{ request()->is('admin/trading/trade-history') ? 'active' : null }}"><a
                                  href="{{ url('admin/trading/trade-history') }}">Trade History</a></li>
 
+                         <li class="{{ request()->is('admin/trading/active-trading') ? 'active' : null }}"><a
+                                 href="{{ url('admin/trading/active-trading') }}">Active Trading</a></li>
 
                      </ul>
                  </li>
@@ -82,7 +84,7 @@
                      <ul style="display: none;">
                          <li class="{{ request()->is('admin/frozen-account/view') ? 'active' : null }}"><a
                                  href="{{ url('admin/frozen-account/view') }}">Frozen Account Users</a></li>
-                         
+
 
 
                      </ul>
@@ -120,10 +122,10 @@
                          <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
                      </li>
                  @endif
-               
-                  <li class="{{ request()->is('logout*') ? 'active' : null }}">
-                         <a href="{{ url('logout') }}"><i class="bx bx-log-in-circle"></i> <span>Logout</span></a>
-                     </li>
+
+                 <li class="{{ request()->is('logout*') ? 'active' : null }}">
+                     <a href="{{ url('logout') }}"><i class="bx bx-log-in-circle"></i> <span>Logout</span></a>
+                 </li>
 
 
 
