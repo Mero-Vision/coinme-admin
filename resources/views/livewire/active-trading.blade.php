@@ -1,8 +1,8 @@
 <div>
-   <table class="table mt-3" wire:poll.1s>
-        <thead>
+    <table class="table mt-3" wire:poll.1s>
+        <thead class="bg-primary text-light">
             <tr>
-                 <th>Client Name</th>
+                <th>Client Name</th>
                 <th>Purchase Amount</th>
                 <th>Direction</th>
                 <th>Purchase Price</th>
@@ -23,14 +23,22 @@
 
                     <td>{{ $data->purchase_price }} <span class="text-capitalize">{{ $data->coin }}</span></td>
                     <td class="deliveryTimeCell">{{ $data->created_at->diffForHumans() }}</td>
-                   
+
                 </tr>
             @empty
-            @endforelse
+               
+                    <tr>
+                        <td colspan="5">
+                            <img src="{{ url('assets/img/Empty-rafiki.png') }}" class="img-fluid d-block mx-auto"
+                                style="width: 30%" />
+                        </td>
+                    </tr>
+               
+                @endforelse
 
 
-        </tbody>
+            </tbody>
 
 
-    </table>
-</div>
+        </table>
+    </div>
