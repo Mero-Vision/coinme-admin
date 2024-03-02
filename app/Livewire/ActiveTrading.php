@@ -13,8 +13,8 @@ class ActiveTrading extends Component
     
     public function render()
     {
-        $this->trades = TradeTransaction::where('trade_status', null)
-            ->where('client_id', auth()->user()->id)->latest()->get();
+        $this->trades = TradeTransaction::join('users', 'users.id','=', 'trade_transactions.client_id')
+        ->where('trade_status', null)->latest()->get();
 
             
         return view('livewire.active-trading');
