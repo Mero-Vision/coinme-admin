@@ -29,23 +29,28 @@ class DashboardController extends Controller
         $clientBalance=ClientBalance::sum('dollar_balance');
 
         $todayRecharge = ClientRechargeHistory::whereDate('created_at', Carbon::today())->sum('recharge_amount');
+        $todayRecharge = number_format($todayRecharge, 2);
 
         $yesterdayRecharge = ClientRechargeHistory::whereDate('created_at', Carbon::yesterday())->sum('recharge_amount');
-
+        $yesterdayRecharge = number_format($yesterdayRecharge, 2);
+        
         $sevenDaysAgo = Carbon::now()->subDays(7);
 
         $lastSevenDaysRecharge = ClientRechargeHistory::where('created_at', '>=', $sevenDaysAgo)
         ->sum('recharge_amount');
+        $lastSevenDaysRecharge = number_format($lastSevenDaysRecharge, 2);
 
         $fifteenDaysAgo = Carbon::now()->subDays(15);
 
         $lastFifteenDaysRecharge = ClientRechargeHistory::where('created_at', '>=', $fifteenDaysAgo)
         ->sum('recharge_amount');
+        $lastFifteenDaysRecharge = number_format($lastFifteenDaysRecharge, 2);
 
         $thirtyDaysAgo = Carbon::now()->subDays(30);
 
         $frozenAmount = ClientBalance::where('created_at', '>=', $thirtyDaysAgo)
         ->sum('frozen_amount');
+        $frozenAmount = number_format($frozenAmount, 2);
 
         $totalClientsToday = User::where('status', '!=', 'admin')
         ->whereDate('created_at', Carbon::today())
