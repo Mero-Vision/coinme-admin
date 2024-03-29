@@ -91,6 +91,24 @@
                  </li>
 
 
+                 <li class="submenu {{ request()->is('admin/employees*') ? 'active' : null }}">
+                     <a href="#"><i class="fa fa-user"></i> <span>Employees</span> <span
+                             class="menu-arrow"></span></a>
+                     <ul style="display: none;">
+                         <li class="{{ request()->is('admin/employees/dashboard') ? 'active' : null }}"><a
+                                 href="{{url('admin/employees/dashboard')}}">Employees Dashboard</a></li>
+
+                         <li class="{{ request()->is('admin/employees/view-employees') ? 'active' : null }}"><a
+                                 href="{{url('admin/employees/view-employees')}}">View Employees</a></li>
+                        <li class="{{ request()->is('admin/frozen-account/view') ? 'active' : null }}"><a
+                                 href="">Employees Deposit</a></li>
+
+
+
+                     </ul>
+                 </li>
+
+
 
                  {{-- <li>
                      <a href="{{ url('admin/chat') }}"><i class="fa fa-comments"></i> <span>Chat</span> <span

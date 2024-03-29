@@ -11,6 +11,7 @@ use App\Http\Controllers\CryptoCurrencyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeliveryTimeController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\FrozenAmountController;
 use App\Http\Controllers\IDVerificationController;
@@ -183,7 +184,12 @@ Route::group(
         Route::get('admin/analytics/client-recharge-analytics', [AnalyticsController::class, 'clientRechargeAnalytcis']);
        
 
-       
+       Route::get('admin/employees/view-employees',[EmployeeController::class, 'viewEmployees']);
+        Route::get('admin/employees/add-employees', [EmployeeController::class, 'createEmployees']);
+        Route::post('admin/employees/add-employees', [EmployeeController::class, 'store']);
+        Route::get('admin/employees/add-employees/data', [EmployeeController::class, 'employeesData']);
+        Route::get('admin/employees/delete/{id}', [EmployeeController::class, 'destroy']);
+        Route::get('admin/employees/dashboard', [EmployeeController::class, 'employeeDashboard']);
 
         
 
