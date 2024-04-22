@@ -42,7 +42,7 @@ class UserController extends Controller
 
     public function userDataAjax()
     {
-        $user = User::where('status', '!=', 'admin')->latest()->get();
+        $user = User::where('status', '!=', 'admin')-> where('status', '!=', 'super-admin')->latest()->get();
         return response()->json(['data' => $user]);
     }
 

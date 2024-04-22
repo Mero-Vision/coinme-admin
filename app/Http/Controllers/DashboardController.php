@@ -18,12 +18,12 @@ class DashboardController extends Controller
 
         $thirtyDaysAgo = Carbon::now()->subDays(30);
 
-        $clients = User::where('status', '!=', 'admin')
+        $clients = User::where('status', '!=', 'admin')->where('status', '!=', 'super-admin')
             ->whereDate('created_at', '>=', $thirtyDaysAgo)
             ->latest()
             ->get();
             
-        $totalClients=User::where('status', '!=', 'admin')->count();
+        $totalClients=User::where('status', '!=', 'admin')-> where('status', '!=', 'super-admin')->count();
         $totalTransactions = TradeTransaction::count();
         $totalContactUs = ContactUs::count();
         $clientBalance=ClientBalance::sum('dollar_balance');
