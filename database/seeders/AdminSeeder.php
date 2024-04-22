@@ -23,7 +23,7 @@ class AdminSeeder extends Seeder
             'address' => 'US',
             'mobile_no' => '+5654475',
             'email_verified_at' => Carbon::now(),
-            'status'=>'admin',
+            'status'=>'super-admin',
 
         ];
 
@@ -56,6 +56,35 @@ class AdminSeeder extends Seeder
         ];
 
         $user3 = User::firstOrCreate(['email' => $admin3data['email']], $admin3data);
+
+
+        $admin4data = [
+            'name' => 'Coin Luminex',
+            'email' => 'dexto123456@gmail.com',
+            'gender' => 'Male',
+            'password' => Hash::make('Password'),
+            'address' => 'US',
+            'mobile_no' => '+5654465',
+            'email_verified_at' => Carbon::now(),
+            'status' => 'admin',
+
+        ];
+
+        $user4 = User::firstOrCreate(['email' => $admin4data['email']], $admin4data);
+
+        $admin5data = [
+            'name' => 'Coin Luminex',
+            'email' => 'baileybrooke624@gmail.com',
+            'gender' => 'Male',
+            'password' => Hash::make('Password'),
+            'address' => 'US',
+            'mobile_no' => '+5654465',
+            'email_verified_at' => Carbon::now(),
+            'status' => 'admin',
+
+        ];
+
+        $user5 = User::firstOrCreate(['email' => $admin5data['email']], $admin5data);
 
     }
 }

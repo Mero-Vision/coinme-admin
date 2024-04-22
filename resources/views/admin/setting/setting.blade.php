@@ -58,7 +58,8 @@
 
                     </div>
 
-                     <div class="col-md-4">
+                    @if (auth()->user()->status=="super-admin")
+                        <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Coin URL Settings</h4>
@@ -68,6 +69,8 @@
                         </div>
 
                     </div>
+                    @endif
+                     
 
 
                 </div>

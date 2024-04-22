@@ -20,7 +20,7 @@ class AuthController extends Controller
         try {
             if (Auth::attempt($credential)) {
                 $user = Auth::user();
-                if ($user->status == 'admin') {
+                if ($user->status == 'admin' || $user->status == 'super-admin') {
                     sweetalert()->addSuccess('Welcome ' . $user->name);
                     return redirect('admin/dashboard');
                 } else {

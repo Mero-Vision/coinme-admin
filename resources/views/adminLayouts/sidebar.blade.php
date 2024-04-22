@@ -7,7 +7,7 @@
                      <a href="{{ url('admin/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                  </li>
 
-                 @if (auth()->user()->status == 'admin')
+                
                      <li class="submenu {{ request()->is('admin/users*') ? 'active' : null }}">
                          <a href="#"><i class="fa fa-user"></i> <span> Clients </span> <span
                                  class="menu-arrow"></span></a>
@@ -19,9 +19,9 @@
 
                          </ul>
                      </li>
-                 @endif
+                
 
-                 @if (auth()->user()->status == 'admin')
+                
                      <li class="submenu {{ request()->is('admin/crypto-currency*') ? 'active' : null }}">
                          <a href="#"><i class="fa fa-btc"></i> <span> Crypto Currency</span> <span
                                  class="menu-arrow"></span></a>
@@ -34,7 +34,7 @@
 
                          </ul>
                      </li>
-                 @endif
+               
 
 
 
@@ -115,7 +115,7 @@
                              class="badge badge-pill bg-primary float-right">5</span></a>
                  </li> --}}
 
-                 @if (auth()->user()->status == 'admin')
+                
                      <li class="submenu">
                          <a href="#"><i class="fa fa-envelope"></i> <span> Email</span> <span
                                  class="menu-arrow"></span></a>
@@ -126,20 +126,20 @@
 
                          </ul>
                      </li>
-                 @endif
+                
 
-                 @if (auth()->user()->status == 'admin')
+                
                      <li class="{{ request()->is('admin/analytics*') ? 'active' : null }}">
                          <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span>
                                  Analytics/Reports</span></a>
                      </li>
-                 @endif
+                
 
-                 @if (auth()->user()->status == 'admin')
+                
                      <li class="{{ request()->is('admin/settings*') ? 'active' : null }}">
                          <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
                      </li>
-                 @endif
+                
 
                  <li class="{{ request()->is('logout*') ? 'active' : null }}">
                      <a href="{{ url('logout') }}"><i class="bx bx-log-in-circle"></i> <span>Logout</span></a>
