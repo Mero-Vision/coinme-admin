@@ -129,7 +129,7 @@
         function deleteAccess(user_id) {
             if (confirm('Are you sure you want to delete this user account?')) {
                 $.ajax({
-                    url: '/admin/users/developers/delete/' + user_id,
+                    url: '/admin/users/delete/' + user_id,
                     type: 'GET',
                     data: {
                         _method: 'DELETE'

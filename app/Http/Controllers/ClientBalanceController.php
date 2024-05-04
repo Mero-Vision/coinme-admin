@@ -277,4 +277,32 @@ class ClientBalanceController extends Controller
 
         return response()->json(['currentCoinValue' => $currentCoinValue]);
     }
+
+    public function updateClientBalance(Request $request){
+
+        $clientBalance=ClientBalance::find($request->client_balance_id);
+        if(!$clientBalance){
+            return back()->with('error','Client Balance ID Not Found!');
+        }
+
+        try{
+            $clientBalance=DB::transaction(function()use($clientBalance,$request){
+                $clientBalance->update([
+                    'dollar_balance'=>$request->client_balance
+                ]);
+
+                return $clientBalance;
+                
+            });
+            if($clientBalance){
+                return back()->with('success','Client Balance Updated Successfully!');
+            }
+            
+        }
+        catch(\Exception $e){
+            return back()->with('error',$e->getMessage());
+            
+        }
+        
+    }
 }

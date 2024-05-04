@@ -149,7 +149,7 @@
                                     Verified
                                 </button>
                             @else
-                             <button class="btn btn-danger mt-3"><i class='bx bxs-badge-check'></i> Rejected
+                                <button class="btn btn-danger mt-3"><i class='bx bxs-badge-check'></i> Rejected
                                 </button>
                             @endif
 
@@ -170,24 +170,83 @@
                                     <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab3"
                                             data-toggle="tab">ETH</a></li>
                                 </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane show active" id="solid-rounded-justified-tab1">
+                                {{-- @if (auth()->user()->status == 'super-admin') --}}
+                                @if (auth()->user()->status == 'admin')
+                                    <div class="tab-content">
+                                        <div class="tab-pane show active" id="solid-rounded-justified-tab1">
+                                            <form action="{{ url('admin/users/client-balance/update') }}">
+                                                <h3 class="mt-3" id="usdtBalance">
+                                                    {{ $usdtBalance->dollar_balance }}
+                                                    <span>USD</span>
+                                                </h3>
+                                                <input type="hidden" value="{{ $usdtBalance->id }}"
+                                                    name="client_balance_id" />
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $usdtBalance->dollar_balance }}"
+                                                        name="client_balance" />
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane" id="solid-rounded-justified-tab2">
+                                            <form action="{{ url('admin/users/client-balance/update') }}">
+                                                <h3 class=" mt-3" id="btcBalance">{{ $btcBalance->dollar_balance }}
+                                                    <span>USD</span>
 
-                                        <h3 class="mt-3" id="usdtBalance">{{ $usdtBalance->dollar_balance }}
-                                            <span>USD</span>
-                                        </h3>
+                                                </h3>
+                                                <input type="hidden" value="{{ $btcBalance->id }}"
+                                                    name="client_balance_id" />
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $btcBalance->dollar_balance }}"
+                                                        name="client_balance" />
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane" id="solid-rounded-justified-tab3">
+                                            <form action="{{ url('admin/users/client-balance/update') }}">
+                                                <h3 class=" mt-3" id="etcBalance">{{ $etcBalance->dollar_balance }}
+                                                    <span>USD</span>
+                                                </h3>
+                                                <input type="hidden" value="{{ $etcBalance->id }}"
+                                                    name="client_balance_id" />
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $etcBalance->dollar_balance }}"
+                                                        name="client_balance" />
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane" id="solid-rounded-justified-tab2">
-                                        <h3 class=" mt-3" id="btcBalance">{{ $btcBalance->dollar_balance }}
-                                            <span>USD</span>
-                                        </h3>
+                                @else
+                                    <div class="tab-content">
+                                        <div class="tab-pane show active" id="solid-rounded-justified-tab1">
+
+                                            <h3 class="mt-3" id="usdtBalance">
+                                                {{ $usdtBalance->dollar_balance }}
+                                                <span>USD</span>
+                                            </h3>
+                                        </div>
+                                        <div class="tab-pane" id="solid-rounded-justified-tab2">
+                                            <h3 class=" mt-3" id="btcBalance">{{ $btcBalance->dollar_balance }}
+                                                <span>USD</span>
+                                            </h3>
+                                        </div>
+                                        <div class="tab-pane" id="solid-rounded-justified-tab3">
+                                            <h3 class=" mt-3" id="etcBalance">{{ $etcBalance->dollar_balance }}
+                                                <span>USD</span>
+                                            </h3>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane" id="solid-rounded-justified-tab3">
-                                        <h3 class=" mt-3" id="etcBalance">{{ $etcBalance->dollar_balance }}
-                                            <span>USD</span>
-                                        </h3>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
 
                             <div class="card-box">

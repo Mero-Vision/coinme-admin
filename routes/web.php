@@ -69,6 +69,8 @@ Route::group(
         Route::get('admin/users/data/{id}', [UserController::class, 'viewUserData']);
         Route::get('admin/users/freeze/{id}', [UserController::class, 'freezeAccount']);
         Route::get('admin/users/unfreeze/{id}', [UserController::class, 'unfreezeAccount']);
+        Route::get('admin/users/delete/{id}', [UserController::class, 'destroy']);
+        Route::get('admin/users/client-balance/update', [ClientBalanceController::class, 'updateClientBalance']);
         
 
         Route::group(['prefix' => 'admin/settings'], function () {

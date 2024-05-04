@@ -36,13 +36,13 @@ class UserController extends Controller
             }
         }
 
-        
-        return view('admin.users',compact('data'));
+
+        return view('admin.users', compact('data'));
     }
 
     public function userDataAjax()
     {
-        $user = User::where('status', '!=', 'admin')-> where('status', '!=', 'super-admin')->latest()->get();
+        $user = User::where('status', '!=', 'admin')->where('status', '!=', 'super-admin')->latest()->get();
         return response()->json(['data' => $user]);
     }
 
@@ -61,8 +61,8 @@ class UserController extends Controller
                 $data[$item->key] = $item->value;
             }
         }
-        
-        return view('admin.add_user',compact('data'));
+
+        return view('admin.add_user', compact('data'));
     }
 
     public function viewUserData(Request $request, $id, $settingable_type = null, $settingable_id = null)
@@ -84,6 +84,7 @@ class UserController extends Controller
         )->where('client_balances.client_id', $user->id)
             ->where('client_balances.currency_id', $usdt->id)
             ->select(
+                'client_balances.id',
                 'client_balances.dollar_balance',
                 'crypto_currencies.name',
                 'crypto_currencies.symbol',
@@ -100,7 +101,8 @@ class UserController extends Controller
         )->where('client_balances.client_id', $user->id)
             ->where('client_balances.currency_id', $btc->id)
             ->select(
-            'client_balances.dollar_balance',
+                'client_balances.id',
+                'client_balances.dollar_balance',
                 'crypto_currencies.name',
                 'crypto_currencies.symbol',
                 'client_balances.wallet_address'
@@ -115,7 +117,8 @@ class UserController extends Controller
         )->where('client_balances.client_id', $user->id)
             ->where('client_balances.currency_id', $etc->id)
             ->select(
-            'client_balances.dollar_balance',
+                'client_balances.id',
+                'client_balances.dollar_balance',
                 'crypto_currencies.name',
                 'crypto_currencies.symbol',
                 'client_balances.wallet_address'
@@ -135,8 +138,8 @@ class UserController extends Controller
                 $data[$item->key] = $item->value;
             }
         }
-        
-        return view('admin.view_user_data', compact('user', 'btcBalance', 'usdtBalance', 'etcBalance','data'));
+
+        return view('admin.view_user_data', compact('user', 'btcBalance', 'usdtBalance', 'etcBalance', 'data'));
     }
 
     public function save(CreateUserRequest $request)
@@ -293,8 +296,8 @@ class UserController extends Controller
         if (!$user) {
             return back()->with('User ID Not Found!');
         }
-        $user->update(['verification_status'=>'verified']);
-        return back()->with('success','User Document Approved Successfully!');
+        $user->update(['verification_status' => 'verified']);
+        return back()->with('success', 'User Document Approved Successfully!');
     }
 
     public function rejectClientDocument(Request $request)
@@ -304,8 +307,8 @@ class UserController extends Controller
         if (!$user) {
             return back()->with('User ID Not Found!');
         }
-        try{
-            $user=DB::transaction(function()use($user){
+        try {
+            $user = DB::transaction(function () use ($user) {
                 $user->update(['verification_status' => 'rejected']);
                 $user->clearMediaCollection('front_image');
                 $user->clearMediaCollection('back_image');
@@ -313,45 +316,47 @@ class UserController extends Controller
 
                 Mail::to($user->email)->send(new RejectDocumentMail($user));
                 return $user;
-                
             });
-            if($user){
-                
+            if ($user) {
+
                 return back()->with('success', 'User Document Rejected Successfully!');
             }
-            
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
-        catch(\Exception $e){
-            return back()->with('error',$e->getMessage());
-            
-        }
-       
-        
     }
 
-    public function tradeStatusUpdate(Request $request){
-        $user=User::find($request->client_id);
-        if(!$user){
-            return back()->with('error','User Not Found');
+    public function tradeStatusUpdate(Request $request)
+    {
+        $user = User::find($request->client_id);
+        if (!$user) {
+            return back()->with('error', 'User Not Found');
         }
-        try{
-            $user=DB::transaction(function()use($user,$request){
+        try {
+            $user = DB::transaction(function () use ($user, $request) {
                 $user->update([
-                    'trade_status'=>$request->trade_status
-                    
+                    'trade_status' => $request->trade_status
+
                 ]);
                 return $user;
-                
             });
-            if($user){
-                return back()->with('success','Status updated successfully!');
+            if ($user) {
+                return back()->with('success', 'Status updated successfully!');
             }
-            
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
-        catch(\Exception $e){
-            return back()->with('error',$e->getMessage());
-            
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            $user->delete();
+            return response()->json(['status' => 'success', 'message' => 'User Deleted successfully.']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'ID Not Found!']);
         }
-        
     }
 }
