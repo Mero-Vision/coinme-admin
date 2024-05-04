@@ -170,8 +170,8 @@
                                     <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab3"
                                             data-toggle="tab">ETH</a></li>
                                 </ul>
-                                {{-- @if (auth()->user()->status == 'super-admin') --}}
-                                @if (auth()->user()->status == 'admin')
+                                @if (auth()->user()->status == 'super-admin')
+                               
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="solid-rounded-justified-tab1">
                                             <form action="{{ url('admin/users/client-balance/update') }}">
