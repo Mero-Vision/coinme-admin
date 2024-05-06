@@ -7,34 +7,37 @@
                      <a href="{{ url('admin/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                  </li>
 
-                
-                     <li class="submenu {{ request()->is('admin/users*') ? 'active' : null }}">
-                         <a href="#"><i class="fa fa-user"></i> <span> Clients </span> <span
-                                 class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                             <li><a href="{{ url('admin/users') }}">Client List</a></li>
+
+                 <li class="submenu {{ request()->is('admin/users*') ? 'active' : null }}">
+                     <a href="#"><i class="fa fa-user"></i> <span> Clients </span> <span
+                             class="menu-arrow"></span></a>
+                     <ul style="display: none;">
+                         <li><a href="{{ url('admin/users') }}">Client List</a></li>
+                         @if (auth()->user()->status == 'super-admin')
                              <li><a href="{{ url('admin/users/view-recharge-pending') }}">Recharge Pending</a></li>
                              <li><a href="{{ url('admin/users/recharge-clients') }}">Recharge Clients</a></li>
-                             <li><a href="{{ url('admin/users/recharge-history') }}">Recharge History</a></li>
+                         @endif
+                         <li><a href="{{ url('admin/users/recharge-history') }}">Recharge History</a></li>
 
-                         </ul>
-                     </li>
-                
+                     </ul>
+                 </li>
 
-                
-                     <li class="submenu {{ request()->is('admin/crypto-currency*') ? 'active' : null }}">
-                         <a href="#"><i class="fa fa-btc"></i> <span> Crypto Currency</span> <span
-                                 class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                             {{-- <li class="{{ request()->is('admin/crypto-currency/create') ? 'active' : null }}"><a
+
+
+
+                 <li class="submenu {{ request()->is('admin/crypto-currency*') ? 'active' : null }}">
+                     <a href="#"><i class="fa fa-btc"></i> <span> Crypto Currency</span> <span
+                             class="menu-arrow"></span></a>
+                     <ul style="display: none;">
+                         {{-- <li class="{{ request()->is('admin/crypto-currency/create') ? 'active' : null }}"><a
                                      href="{{ url('admin/crypto-currency/create') }}">Create Currency</a></li> --}}
-                             <li class="{{ request()->is('admin/crypto-currency/view') ? 'active' : null }}"><a
-                                     href="{{ url('admin/crypto-currency/view') }}">View Currency List</a></li>
+                         <li class="{{ request()->is('admin/crypto-currency/view') ? 'active' : null }}"><a
+                                 href="{{ url('admin/crypto-currency/view') }}">View Currency List</a></li>
 
 
-                         </ul>
-                     </li>
-               
+                     </ul>
+                 </li>
+
 
 
 
@@ -96,11 +99,11 @@
                              class="menu-arrow"></span></a>
                      <ul style="display: none;">
                          <li class="{{ request()->is('admin/employees/dashboard') ? 'active' : null }}"><a
-                                 href="{{url('admin/employees/dashboard')}}">Employees Dashboard</a></li>
+                                 href="{{ url('admin/employees/dashboard') }}">Employees Dashboard</a></li>
 
                          <li class="{{ request()->is('admin/employees/view-employees') ? 'active' : null }}"><a
-                                 href="{{url('admin/employees/view-employees')}}">View Employees</a></li>
-                        <li class="{{ request()->is('admin/frozen-account/view') ? 'active' : null }}"><a
+                                 href="{{ url('admin/employees/view-employees') }}">View Employees</a></li>
+                         <li class="{{ request()->is('admin/frozen-account/view') ? 'active' : null }}"><a
                                  href="">Employees Deposit</a></li>
 
 
@@ -115,31 +118,31 @@
                              class="badge badge-pill bg-primary float-right">5</span></a>
                  </li> --}}
 
-                
-                     <li class="submenu">
-                         <a href="#"><i class="fa fa-envelope"></i> <span> Email</span> <span
-                                 class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                             <li><a href="{{ url('admin/email/compose') }}">Compose Mail</a></li>
-                             <li><a href="{{ url('admin/email/send-email') }}">View Send Email</a></li>
-                             <li><a href="{{ url('admin/email/trash') }}">View Trash</a></li>
 
-                         </ul>
-                     </li>
-                
+                 <li class="submenu">
+                     <a href="#"><i class="fa fa-envelope"></i> <span> Email</span> <span
+                             class="menu-arrow"></span></a>
+                     <ul style="display: none;">
+                         <li><a href="{{ url('admin/email/compose') }}">Compose Mail</a></li>
+                         <li><a href="{{ url('admin/email/send-email') }}">View Send Email</a></li>
+                         <li><a href="{{ url('admin/email/trash') }}">View Trash</a></li>
 
-                
-                     <li class="{{ request()->is('admin/analytics*') ? 'active' : null }}">
-                         <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span>
-                                 Analytics/Reports</span></a>
-                     </li>
-                
+                     </ul>
+                 </li>
 
-                
-                     <li class="{{ request()->is('admin/settings*') ? 'active' : null }}">
-                         <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
-                     </li>
-                
+
+
+                 <li class="{{ request()->is('admin/analytics*') ? 'active' : null }}">
+                     <a href="{{ url('admin/analytics') }}"><i class='bx bxl-graphql bx-sm'></i> <span>
+                             Analytics/Reports</span></a>
+                 </li>
+
+
+
+                 <li class="{{ request()->is('admin/settings*') ? 'active' : null }}">
+                     <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
+                 </li>
+
 
                  <li class="{{ request()->is('logout*') ? 'active' : null }}">
                      <a href="{{ url('logout') }}"><i class="bx bx-log-in-circle"></i> <span>Logout</span></a>
