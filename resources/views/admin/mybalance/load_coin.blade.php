@@ -27,14 +27,14 @@
                                 @csrf
                                 <input class="form-control" name="client_id" type="hidden"
                                     value="{{ $clientBalance->user_id }}" readonly>
-                                 <input class="form-control" name="recharge_id" type="hidden"
+                                <input class="form-control" name="recharge_id" type="hidden"
                                     value="{{ $clientBalance->id }}" readonly>
 
 
                                 <div class="form-group">
                                     <label>Client Name</label>
-                                    <input class="form-control" type="text" name="client_name" value="{{ $clientBalance->name }}"
-                                        readonly>
+                                    <input class="form-control" type="text" name="client_name"
+                                        value="{{ $clientBalance->name }}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Select Currency</label>
@@ -50,7 +50,8 @@
 
                                 <div class="form-group">
                                     <label>Current Value</label>
-                                    <input id="coinValueInput" name="coin_value" type="text" class="form-control" readonly>
+                                    <input id="coinValueInput" name="coin_value" type="text" class="form-control"
+                                        readonly>
                                 </div>
 
 
@@ -67,12 +68,17 @@
 
                                 <div class="form-group">
                                     <label>Equivalent Coin Amount</label>
-                                    <input id="equivalentCoinAmountInput" name="equivalent_coin_amount" class="form-control" type="text" readonly>
+                                    <input id="equivalentCoinAmountInput" name="equivalent_coin_amount"
+                                        class="form-control" type="text" readonly>
                                 </div>
 
-                                <div class="m-t-20 text-center">
-                                    <button type="submit" class="btn btn-primary submit-btn">Load Amount</button>
-                                </div>
+                                @if (auth()->user()->status == 'super-admin')
+                                    <div class="m-t-20 text-center">
+                                        <button type="submit" class="btn btn-primary submit-btn">Load Amount</button>
+                                    </div>
+                                @else
+                                <h4 class="text-center bg-danger text-light">You are not allowed to recharge the client</h4>
+                                @endif
                             </form>
 
                             <div class="container mt-5">
@@ -117,63 +123,65 @@
         </div>
     </div>
 
-   
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        const coinSelector = $('#coinSelector');
-        const rechargeAmountInput = $('#rechargeAmountInput');
-        const equivalentCoinAmountInput = $('#equivalentCoinAmountInput');
-        const coinValueInput = $('#coinValueInput');
+    <script>
+        $(document).ready(function() {
+            const coinSelector = $('#coinSelector');
+            const rechargeAmountInput = $('#rechargeAmountInput');
+            const equivalentCoinAmountInput = $('#equivalentCoinAmountInput');
+            const coinValueInput = $('#coinValueInput');
 
-        let debounceTimer;
+            let debounceTimer;
 
-        function updateCoinValue() {
-            const selectedCoin = coinSelector.val();
-            const rechargeAmountUSD = Number(rechargeAmountInput.val());
+            function updateCoinValue() {
+                const selectedCoin = coinSelector.val();
+                const rechargeAmountUSD = Number(rechargeAmountInput.val());
 
-            if (isNaN(rechargeAmountUSD)) {
-                console.error('Invalid recharge amount:', rechargeAmountInput.val());
-                return;
+                if (isNaN(rechargeAmountUSD)) {
+                    console.error('Invalid recharge amount:', rechargeAmountInput.val());
+                    return;
+                }
+
+                $.get("/get-coin-price", {
+                        coin: selectedCoin
+                    })
+                    .done(function(data) {
+                        try {
+                            const currentCoinValue = Number(data.currentCoinValue);
+
+                            if (!isNaN(currentCoinValue)) {
+                                const roundedCoinValue = currentCoinValue.toFixed(4);
+                                const equivalentCoinAmount = (rechargeAmountUSD / currentCoinValue).toFixed(4);
+
+
+                                equivalentCoinAmountInput.val(equivalentCoinAmount);
+                                coinValueInput.val(roundedCoinValue);
+                            } else {
+                                console.error('Invalid coin value received:', data.currentCoinValue);
+                            }
+                        } catch (error) {
+                            console.error('Error updating coin value:', error);
+                        }
+                    })
+                    .fail(function(error) {
+                        console.error('Failed to fetch coin price:', error.responseText);
+                    });
             }
 
-            $.get("/get-coin-price", { coin: selectedCoin })
-                .done(function(data) {
-                    try {
-                        const currentCoinValue = Number(data.currentCoinValue);
 
-                        if (!isNaN(currentCoinValue)) {
-                            const roundedCoinValue = currentCoinValue.toFixed(4);
-                            const equivalentCoinAmount = (rechargeAmountUSD / currentCoinValue).toFixed(4);
 
-                           
-                            equivalentCoinAmountInput.val(equivalentCoinAmount);
-                            coinValueInput.val(roundedCoinValue);
-                        } else {
-                            console.error('Invalid coin value received:', data.currentCoinValue);
-                        }
-                    } catch (error) {
-                        console.error('Error updating coin value:', error);
-                    }
-                })
-                .fail(function(error) {
-                    console.error('Failed to fetch coin price:', error.responseText);
-                });
-        }
 
-       
+            setInterval(updateCoinValue, 1000);
 
-        
-        setInterval(updateCoinValue, 1000);
+            // Initial call to updateCoinValue
+            updateCoinValue();
 
-        // Initial call to updateCoinValue
-        updateCoinValue();
-
-        // Debounce input to reduce API calls
-        rechargeAmountInput.on('input', debouncedUpdateCoinValue);
-    });
-</script>
+            // Debounce input to reduce API calls
+            rechargeAmountInput.on('input', debouncedUpdateCoinValue);
+        });
+    </script>
 
 
 
