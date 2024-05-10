@@ -15,9 +15,9 @@
                          <li><a href="{{ url('admin/users') }}">Client List</a></li>
 
                          <li><a href="{{ url('admin/users/view-recharge-pending') }}">Recharge Pending</a></li>
-                         @if (auth()->user()->status == 'super-admin')
+                         {{-- @if (auth()->user()->status == 'super-admin') --}}
                              <li><a href="{{ url('admin/users/recharge-clients') }}">Recharge Clients</a></li>
-                         @endif
+                         {{-- @endif --}}
                          <li><a href="{{ url('admin/users/recharge-history') }}">Recharge History</a></li>
 
                      </ul>

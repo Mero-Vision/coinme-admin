@@ -72,13 +72,17 @@
                                         class="form-control" type="text" readonly>
                                 </div>
 
-                                @if (auth()->user()->status == 'super-admin')
+                                <div class="m-t-20 text-center">
+                                    <button type="submit" class="btn btn-primary submit-btn">Load Amount</button>
+                                </div>
+
+                                {{-- @if (auth()->user()->status == 'super-admin')
                                     <div class="m-t-20 text-center">
                                         <button type="submit" class="btn btn-primary submit-btn">Load Amount</button>
                                     </div>
                                 @else
                                 <h4 class="text-center bg-danger text-light">You are not allowed to recharge the client</h4>
-                                @endif
+                                @endif --}}
                             </form>
 
                             <div class="container mt-5">
