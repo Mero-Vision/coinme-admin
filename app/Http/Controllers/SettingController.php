@@ -72,4 +72,7 @@ class SettingController extends Controller
 
         return redirect('/')->with('success', 'Password changed successfully');
     }
+
+
+    
 }

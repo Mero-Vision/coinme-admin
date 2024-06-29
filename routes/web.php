@@ -23,6 +23,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RechargeController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\TimezoneController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WithdrawalRecordController;
@@ -41,6 +42,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', [IndexController::class, 'index']);
+
+Route::get('/check-timezone', function () {
+    return response()->json([
+        'config_timezone' => config('app.timezone'),
+        'default_timezone' => date_default_timezone_get(),
+        'current_time' => now()->toDateTimeString(),
+    ]);
+});
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
@@ -80,6 +89,8 @@ Route::group(
             Route::get('/about_us', [AboutController::class, 'viewAboutUsEdit']);
             Route::get('/coin-url', [CoinURLController::class, 'index']);
             Route::post('/coin-url', [CoinURLController::class, 'store']);
+            Route::get('/timezone', [TimezoneController::class, 'timzeZoneSettingIndex']);
+            Route::post('/timezone/update', [TimezoneController::class, 'update']);
 
             Route::get('/admin/settings', [SiteSettingController::class, 'index']);
             Route::post('post', [SiteSettingController::class, 'store']);
