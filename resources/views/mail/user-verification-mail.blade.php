@@ -1,5 +1,5 @@
 <x-mail::message>
-# Coin Me
+# Crypto Luminex
 
 Dear {!! $user->name !!},
 
@@ -12,5 +12,5 @@ Verify Email
 If you did not register for an account with Coin Me, please disregard this email.
 
 Best regards,<br>
-Coin Me
+Crypto Luminex
 </x-mail::message>

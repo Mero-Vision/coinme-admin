@@ -1,5 +1,5 @@
 <x-mail::message>
-<h1 style="color: #004080; font-size: 24px; font-weight: bold;">Coin Luminex</h1>
+<h1 style="color: #004080; font-size: 24px; font-weight: bold;">Crypto Luminex</h1>
 
 <p style="font-size: 16px; line-height: 1.5; color: #333;">Dear {{$user->name}},</p>
 
@@ -11,6 +11,6 @@
 
 <p style="font-size: 16px; line-height: 1.5; color: #333;">
 Best Regards,<br>
-Coin Luminex
+Crypto Luminex
 </p>
 </x-mail::message>

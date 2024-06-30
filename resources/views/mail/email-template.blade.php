@@ -1,5 +1,5 @@
 <x-mail::message>
-<h1 style="color: #007BFF; font-family: 'Arial', sans-serif;">Coin Luminex</h1>
+<h1 style="color: #007BFF; font-family: 'Arial', sans-serif;">Crypto Luminex</h1>
 
 <p style="font-size: 16px; line-height: 1.6;">
         Dear User,
@@ -14,7 +14,7 @@
 
 <p style="font-size: 16px; line-height: 1.6;">
 <strong>Best Regards,</strong><br>
-<span style="color: #007BFF; font-weight: bold;">Coin Luminex</span>
+<span style="color: #007BFF; font-weight: bold;">Crypto Luminex</span>
 </p>
 </x-mail::message>
 

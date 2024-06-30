@@ -20,7 +20,7 @@
 {{-- Footer --}}
 <x-slot:footer>
 <x-mail::footer>
-© {{ date('Y') }} @lang('Coin Luminex'). @lang('All rights reserved.')
+© {{ date('Y') }} @lang('Crypto Luminex'). @lang('All rights reserved.')
 </x-mail::footer>
 </x-slot:footer>
 </x-mail::layout>
