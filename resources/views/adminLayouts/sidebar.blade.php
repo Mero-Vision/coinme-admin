@@ -48,9 +48,12 @@
                              Us</span></a>
                  </li>
 
+                 <li class="{{ request()->is('admin/service-center') ? 'active' : null }}">
+                     <a href="{{ url('admin/service-center') }}"><i class='bx bx-conversation'></i> <span>Service
+                             Center</span></a>
+                 </li>
 
-
-
+                 
                  <li class="submenu {{ request()->is('admin/trading*') ? 'active' : null }}">
                      <a href="#"><i class='bx bxl-bitcoin'></i> <span> Trading Market</span> <span
                              class="menu-arrow"></span></a>
